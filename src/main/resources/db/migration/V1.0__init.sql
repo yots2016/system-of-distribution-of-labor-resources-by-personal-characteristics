@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS `category` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
-CREATE TABLE IF NOT EXISTS`product` (
+CREATE TABLE IF NOT EXISTS`project` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `created_at` datetime DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,

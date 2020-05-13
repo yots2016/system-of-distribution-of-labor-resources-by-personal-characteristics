@@ -14,7 +14,7 @@ services:
         - DATABASE_HOST=demo-mysql
         - DATABASE_USER=demo_user
         - DATABASE_PASSWORD=demo_pass
-        - DATABASE_NAME=db_product
+        - DATABASE_NAME=db_project
         - DATABASE_PORT=3306
   demo-mysql:
     image: mysql:5.6
@@ -22,6 +22,6 @@ services:
           - 3307:3306
     environment:
       - MYSQL_ROOT_PASSWORD=password
-      - MYSQL_DATABASE=db_product
+      - MYSQL_DATABASE=db_project
       - MYSQL_PASSWORD=demo_pass
       - MYSQL_USER=demo_user

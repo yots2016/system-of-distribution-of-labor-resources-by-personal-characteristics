@@ -1,9 +1,9 @@
-[![Build Status](https://travis-ci.org/batuhaniskr/spring-boot-product-system.svg?branch=master)](https://travis-ci.org/batuhaniskr/spring-boot-product-system)
-# Spring-Boot-Product-System
+[![Build Status](https://travis-ci.org/batuhaniskr/spring-boot-project-system.svg?branch=master)](https://travis-ci.org/batuhaniskr/spring-boot-project-system)
+# Spring-Boot-Project-System
 
  Spring Boot Crud Application with Thymeleaf, JPA, Spring Security. 
  
-# Product System
+# Project System
 
 This project based on the Spring Boot project and used packages:
 
@@ -20,7 +20,7 @@ This project based on the Spring Boot project and used packages:
 
 ### 1. Clone the application
 
-<pre> $ git clone https://github.com/batuhaniskr/spring-boot-product-automation.git </pre>
+<pre> $ git clone https://github.com/batuhaniskr/spring-boot-project-automation.git </pre>
 
 ### 2. Database Configuration
 
@@ -47,16 +47,16 @@ or to run the application locally:
 
 commands run the application.
 
-Application runs from localhost:8080/products
+Application runs from localhost:8080/projects
 
 There are users of type user and admin.
 
 Admin Credential: 
 <pre>email: admin@gmail.com  password: admin</pre>
 
-İf you try as user, you will get access denied on delete product page. You have to try as admin.
+İf you try as user, you will get access denied on delete project page. You have to try as admin.
 
-The application runs from http://localhost:8080/products
+The application runs from http://localhost:8080/projects
 
 ## Screenshots
 
