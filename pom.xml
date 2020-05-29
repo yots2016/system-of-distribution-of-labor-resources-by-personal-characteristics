@@ -17,6 +17,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
         <p6spy.version>3.9.0</p6spy.version>
+        <postgresql.version>42.2.1</postgresql.version>
 
         <!-- upgrade to thymeleaf version 3 -->
         <thymeleaf.version>3.0.8.RELEASE</thymeleaf.version>
@@ -50,6 +51,12 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
             <scope>runtime</scope>
         </dependency>
 
