@@ -9,5 +9,6 @@ import org.springframework.stereotype.Repository;
 public interface UserService extends UserDetailsService {
 
     User findByEmail(String email);
+
     User save(UserRegistrationDto userRegistrationDto);
 }

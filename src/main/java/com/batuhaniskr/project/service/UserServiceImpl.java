@@ -4,7 +4,6 @@ import com.batuhaniskr.project.dto.UserRegistrationDto;
 import com.batuhaniskr.project.model.Role;
 import com.batuhaniskr.project.model.User;
 import com.batuhaniskr.project.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,8 +11,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.stream.Collectors;
 
 @Service
@@ -23,7 +22,6 @@ public class UserServiceImpl implements UserService {
 
     private BCryptPasswordEncoder passwordEncoder;
 
-    @Autowired
     public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
@@ -41,16 +39,18 @@ public class UserServiceImpl implements UserService {
                 mapRolesToAuthorities(user.getRoles()));
     }
 
+    @Override
     public User findByEmail(String email){
         return userRepository.findByEmail(email);
     }
 
+    @Override
     public User save(UserRegistrationDto registration){
         User user = new User();
         user.setUsername(registration.getUsername());
         user.setEmail(registration.getEmail());
         user.setPassword(passwordEncoder.encode(registration.getPassword()));
-        user.setRoles(Arrays.asList(new Role("ROLE_USER")));
+        user.setRoles(Collections.singletonList(new Role("ROLE_USER")));
 
         return userRepository.save(user);
     }
