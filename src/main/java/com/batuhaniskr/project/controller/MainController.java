@@ -4,7 +4,7 @@ import com.batuhaniskr.project.model.Category;
 import com.batuhaniskr.project.model.Project;
 import com.batuhaniskr.project.service.CategoryService;
 import com.batuhaniskr.project.service.ProjectService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,23 +19,19 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-@Controller
 @RequestMapping("/projects")
+@RequiredArgsConstructor
+@Controller
 public class MainController {
 
     private static final Logger LOG = Logger.getLogger(MainController.class.getName());
 
-    private ProjectService projectService;
-    private CategoryService categoryService;
-
     private static int currentPage = 1;
     private static int pageSize = 5;
 
-    @Autowired
-    public MainController(ProjectService projectService, CategoryService categoryService) {
-        this.projectService = projectService;
-        this.categoryService = categoryService;
-    }
+    private final ProjectService projectService;
+    private final CategoryService categoryService;
+
 
     @RequestMapping("")
     public String index(Model model, @RequestParam("page") Optional<Integer> page,
