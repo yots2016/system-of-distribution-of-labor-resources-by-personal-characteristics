@@ -1,19 +1,19 @@
 CREATE TABLE category
 (
-    id            serial                 NOT NULL,
+    id            bigserial              NOT NULL,
     category_name character varying(255) NOT NULL,
     CONSTRAINT category_pkey PRIMARY KEY (id)
 );
 
 CREATE TABLE project
 (
-    id          serial  NOT NULL,
+    id          bigserial NOT NULL,
     created_at  timestamp,
     name        character varying(255) DEFAULT NULL,
     price       real,
     quantity    integer,
     updated_at  timestamp,
-    category_id integer NOT NULL,
+    category_id bigint    NOT NULL,
     CONSTRAINT project_pkey PRIMARY KEY (id),
     CONSTRAINT project_category_id_fkey FOREIGN KEY (category_id)
         REFERENCES category (id)
