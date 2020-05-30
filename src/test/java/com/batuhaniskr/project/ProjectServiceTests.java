@@ -26,7 +26,7 @@ public class ProjectServiceTests {
     public void getProjectById() {
         ProjectService projectService = new ProjectService(projectRepository, categoryRepository);
         Project project = new Project();
-        project.setId(1);
+        project.setId(1L);
         project.setName("Test");
         project.setPrice(100F);
         project.setQuantity(3);
