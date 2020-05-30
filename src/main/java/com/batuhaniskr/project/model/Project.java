@@ -1,15 +1,23 @@
 package com.batuhaniskr.project.model;
 
+import lombok.*;
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
+@EqualsAndHashCode(exclude = {"category", "employeesSet", "projectEmployeeRoleSet"})
+@Getter
+@Setter
+@RequiredArgsConstructor
+@ToString
 @Entity
 @Table(name = "project")
 public class Project {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column(name = "name")
     private String name;
@@ -32,53 +40,13 @@ public class Project {
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
-    public Integer getId() {
-        return id;
-    }
+    @Column(nullable = false)
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<Employee> employeesSet;
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Float getPrice() {
-        return price;
-    }
-
-    public void setPrice(Float price) {
-        this.price = price;
-    }
-
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
+    @Column(nullable = false)
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<ProjectEmployeeRole> projectEmployeeRoleSet;
 
     @PrePersist
     public void onPrePersist() {
