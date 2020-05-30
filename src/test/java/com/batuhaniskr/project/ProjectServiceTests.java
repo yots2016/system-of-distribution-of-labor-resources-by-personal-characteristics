@@ -36,9 +36,9 @@ public class ProjectServiceTests {
 
         projectRepository.save(project);
 
-        when(projectRepository.findOne(1)).thenReturn(project);
+        when(projectRepository.findOne(1L)).thenReturn(project);
 
-        Project project1 = projectService.getProjectById(1);
+        Project project1 = projectService.getProjectById(1L);
         assertThat(project1).isEqualTo(project);
     }
 }
