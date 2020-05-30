@@ -32,11 +32,11 @@ public class ProjectService {
         projectRepository.save(project);
     }
 
-    public void deleteProject(Integer id) {
+    public void deleteProject(Long id) {
         projectRepository.delete(id);
     }
 
-    public Project getProjectById(Integer id) {
+    public Project getProjectById(Long id) {
         return projectRepository.findOne(id);
     }
 }

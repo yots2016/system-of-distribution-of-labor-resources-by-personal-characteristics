@@ -74,14 +74,14 @@ public class MainController {
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-    public String deleteProject(@PathVariable("id") Integer id) {
+    public String deleteProject(@PathVariable("id") Long id) {
         projectService.deleteProject(id);
 
         return "redirect:/projects";
     }
 
     @RequestMapping(value = "/edit/{id}")
-    public String editProject(@PathVariable("id") Integer id, Model model) {
+    public String editProject(@PathVariable("id") Long id, Model model) {
         Project project = projectService.getProjectById(id);
         List<Category> categoryList = categoryService.getAllCategory();
         model.addAttribute("project", project);
