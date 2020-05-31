@@ -54,6 +54,7 @@ public class ProjectService {
         firstProjectEmployeeRolePersonalData.setProjectEmployeeRole(pmProjectEmployeeRole);
         projectEmployeeRolePersonalDataRepository.save(firstProjectEmployeeRolePersonalData);
         pmProjectEmployeeRole.setProjectEmployeeRolePersonalDataSet(firstProjectEmployeeRolePersonalData);
+        projectEmployeeRoleRepository.save(pmProjectEmployeeRole);
 
         ProjectEmployeeRoleProfessionalData firstProjectEmployeeRoleProfessionalData = new ProjectEmployeeRoleProfessionalData();
         firstProjectEmployeeRoleProfessionalData.setCommonProfessionalData(commonProfessionalDataRepository.findByDescription(newProjectDto.getPmEmployeeFirstProfessionalCharacteristic()));

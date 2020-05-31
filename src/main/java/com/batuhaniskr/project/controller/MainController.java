@@ -105,6 +105,15 @@ public class MainController {
         return "editproject";
     }
 
+    @RequestMapping(value = "/view/{id}")
+    public String viewProject(@PathVariable("id") Long id, Model model) {
+        Project project = projectService.getProjectById(id);
+
+        model.addAttribute("employeesPage", project.getEmployeesSet());
+
+        return "view-project";
+    }
+
     @ExceptionHandler(NoHandlerFoundException.class)
     public String handlerException() {
         return "error/404";
