@@ -3,6 +3,7 @@ package com.batuhaniskr.project.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @EqualsAndHashCode(exclude = "projectSet")
@@ -22,6 +23,13 @@ public class Category {
     private String categoryName;
 
     @Column(nullable = false)
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private Set<Project> projectSet;
+
+    public void addProject(Project project) {
+        if (projectSet == null) {
+            projectSet = new HashSet<>();
+        }
+        projectSet.add(project);
+    }
 }

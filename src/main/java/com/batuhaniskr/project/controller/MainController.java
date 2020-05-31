@@ -1,9 +1,9 @@
 package com.batuhaniskr.project.controller;
 
+import com.batuhaniskr.project.dto.NewProjectDto;
 import com.batuhaniskr.project.model.Category;
 import com.batuhaniskr.project.model.Project;
-import com.batuhaniskr.project.service.CategoryService;
-import com.batuhaniskr.project.service.ProjectService;
+import com.batuhaniskr.project.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Controller;
@@ -31,6 +31,9 @@ public class MainController {
 
     private final ProjectService projectService;
     private final CategoryService categoryService;
+    private final CommonPersonalDataService commonPersonalDataService;
+    private final CommonProfessionalDataService commonProfessionalDataService;
+    private final WeightingFactorService weightingFactorService;
 
 
     @RequestMapping("")
@@ -59,16 +62,28 @@ public class MainController {
     @RequestMapping(value = "/add")
     public String addProject(@Valid Model model) {
         List<Category> categoryList = categoryService.getAllCategory();
-        model.addAttribute("project", new Project());
+        model.addAttribute("newProjectDto", new NewProjectDto());
         model.addAttribute("categoryList", categoryList);
+        model.addAttribute("commonPersonalDataList", commonPersonalDataService.getAllCommonPersonalData());
+        model.addAttribute("commonProfessionalDataList", commonProfessionalDataService.getAllCommonProfessionalData());
+        model.addAttribute("weightingFactorList", weightingFactorService.getAllWeightingFactor());
 
         return "addproject";
     }
 
+//    @RequestMapping(value = "/save", method = RequestMethod.POST)
+//    public String save(Project project) {
+//        LOG.log(Level.INFO, "/ " + project.getName());
+//        projectService.saveProject(project);
+//
+//        return "redirect:/projects";
+//    }
+
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String save(Project project) {
-        LOG.log(Level.INFO, "/ " + project.getName());
-        projectService.saveProject(project);
+    public String save(NewProjectDto newProjectDto) {
+        LOG.log(Level.INFO, "/ " + newProjectDto.getName());
+
+        projectService.saveProject(newProjectDto);
 
         return "redirect:/projects";
     }

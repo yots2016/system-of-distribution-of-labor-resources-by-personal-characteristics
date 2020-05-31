@@ -3,6 +3,7 @@ package com.batuhaniskr.project.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @EqualsAndHashCode(exclude = {"project", "employeePersonalDataSet", "employeeProfessionalDataSet"})
@@ -41,4 +42,18 @@ public class Employee {
     @Column(nullable = false)
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<EmployeeProfessionalData> employeeProfessionalDataSet;
+
+    public void setEmployeePersonalDataSet(EmployeePersonalData employeePersonalData) {
+        if (employeePersonalDataSet == null) {
+            employeePersonalDataSet = new HashSet<>();
+        }
+        this.employeePersonalDataSet.add(employeePersonalData);
+    }
+
+    public void setEmployeeProfessionalDataSet(EmployeeProfessionalData employeeProfessionalData) {
+        if (employeeProfessionalDataSet == null) {
+            employeeProfessionalDataSet = new HashSet<>();
+        }
+        this.employeeProfessionalDataSet.add(employeeProfessionalData);
+    }
 }
