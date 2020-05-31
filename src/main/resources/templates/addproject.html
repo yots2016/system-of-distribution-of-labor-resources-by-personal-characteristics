@@ -12,15 +12,2292 @@
             <h3>New Project</h3>
         </div>
         <div class="panel-body">
-            <form th:object="${project}" th:action="@{save}" action="#" method="post">
+            <!--            TODO 31.05.2020 Add using NewProjectDto-->
+            <form th:object="${newProjectDto}" th:action="@{save}" action="#" method="post">
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" class="form-control" id="name" th:field="*{name}" placeholder="Name"/>
                 </div>
                 <div class="form-group">
+                    <label for="pm">Project manager employee number</label>
+                    <input type="text" class="form-control" id="pm" th:field="*{pmEmployeeNumber}"
+                           placeholder="Project manager employee number"/>
+                </div>
+
+                <!--Project manager-->
+                <div class="form-group">
+                    <div class="form-group">
+                        <label>Project manager personal characteristics and weighting factors</label>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{pmEmployeeFirstPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select first personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{pmEmployeeFirstPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{pmEmployeeSecondPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{pmEmployeeSecondPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{pmEmployeeThirdPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{pmEmployeeThirdPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{pmEmployeeFourthPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{pmEmployeeFourthPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{pmEmployeeFifthPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{pmEmployeeFifthPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{pmEmployeeSixthPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{pmEmployeeSixthPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{pmEmployeeSeventhPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{pmEmployeeSeventhPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label>Project manager professional characteristics and weighting factors</label>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{pmEmployeeFirstProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select first professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonProfessionalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{pmEmployeeFirstProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{pmEmployeeSecondProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{pmEmployeeSecondProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{pmEmployeeThirdProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{pmEmployeeThirdProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{pmEmployeeFourthProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{pmEmployeeFourthProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{pmEmployeeFifthProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{pmEmployeeFifthProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{pmEmployeeSixthProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{pmEmployeeSixthProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{pmEmployeeSeventhProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{pmEmployeeSeventhProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="ba">Business analyst employee number</label>
+                    <input type="text" class="form-control" id="ba" th:field="*{baEmployeeNumber}"
+                           placeholder="Business analyst employee number"/>
+                </div>
+
+                <!--Business analyst-->
+                <div class="form-group">
+                    <div class="form-group">
+                        <label>Business analyst personal characteristics and weighting factors</label>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{baEmployeeFirstPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select first personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{baEmployeeFirstPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{baEmployeeSecondPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{baEmployeeSecondPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{baEmployeeThirdPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{baEmployeeThirdPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{baEmployeeFourthPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{baEmployeeFourthPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{baEmployeeFifthPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{baEmployeeFifthPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{baEmployeeSixthPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{baEmployeeSixthPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{baEmployeeSeventhPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{baEmployeeSeventhPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label>Business analyst professional characteristics and weighting factors</label>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{baEmployeeFirstProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select first professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{baEmployeeFirstProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{baEmployeeSecondProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{baEmployeeSecondProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{baEmployeeThirdProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{baEmployeeThirdProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{baEmployeeFourthProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{baEmployeeFourthProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{baEmployeeFifthProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{baEmployeeFifthProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{baEmployeeSixthProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{baEmployeeSixthProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{baEmployeeSeventhProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{baEmployeeSeventhProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="sa">System analyst employee number</label>
+                    <input type="text" class="form-control" id="sa" th:field="*{saEmployeeNumber}"
+                           placeholder="System analyst employee number"/>
+                </div>
+
+                <!--System analyst-->
+                <div class="form-group">
+                    <div class="form-group">
+                        <label>System analyst personal characteristics and weighting factors</label>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{saEmployeeFirstPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select first personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{saEmployeeFirstPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{saEmployeeSecondPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{saEmployeeSecondPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{saEmployeeThirdPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{saEmployeeThirdPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{saEmployeeFourthPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{saEmployeeFourthPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{saEmployeeFifthPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{saEmployeeFifthPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{saEmployeeSixthPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{saEmployeeSixthPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{saEmployeeSeventhPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{saEmployeeSeventhPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label>System analyst professional characteristics and weighting factors</label>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{saEmployeeFirstProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select first professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{saEmployeeFirstProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{saEmployeeSecondProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{saEmployeeSecondProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{saEmployeeThirdProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{saEmployeeThirdProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{saEmployeeFourthProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{saEmployeeFourthProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{saEmployeeFifthProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{saEmployeeFifthProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{saEmployeeSixthProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{saEmployeeSixthProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{saEmployeeSeventhProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{saEmployeeSeventhProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="fe">Front-end employee number</label>
+                    <input type="text" class="form-control" id="fe" th:field="*{feEmployeeNumber}"
+                           placeholder="Front-end employee number"/>
+                </div>
+
+                <!--Front-end-->
+                <div class="form-group">
+                    <div class="form-group">
+                        <label>Front-end developer personal characteristics and weighting factors</label>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{feEmployeeFirstPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select first personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{feEmployeeFirstPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{feEmployeeSecondPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{feEmployeeSecondPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{feEmployeeThirdPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{feEmployeeThirdPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{feEmployeeFourthPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{feEmployeeFourthPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{feEmployeeFifthPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{feEmployeeFifthPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{feEmployeeSixthPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{feEmployeeSixthPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{feEmployeeSeventhPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{feEmployeeSeventhPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label>Front-end developer professional characteristics and weighting factors</label>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{feEmployeeFirstProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select first professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{feEmployeeFirstProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{feEmployeeSecondProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{feEmployeeSecondProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{feEmployeeThirdProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{feEmployeeThirdProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{feEmployeeFourthProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{feEmployeeFourthProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{feEmployeeFifthProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{feEmployeeFifthProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{feEmployeeSixthProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{feEmployeeSixthProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{feEmployeeSeventhProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{feEmployeeSeventhProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="be">Back-end employee number</label>
+                    <input type="text" class="form-control" id="be" th:field="*{beEmployeeNumber}"
+                           placeholder="Back-end employee number"/>
+                </div>
+
+                <!--Back-end-->
+                <div class="form-group">
+                    <div class="form-group">
+                        <label>Back-end developer personal characteristics and weighting factors</label>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{beEmployeeFirstPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select first personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{beEmployeeFirstPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{beEmployeeSecondPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{beEmployeeSecondPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{beEmployeeThirdPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{beEmployeeThirdPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{beEmployeeFourthPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{beEmployeeFourthPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{beEmployeeFifthPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{beEmployeeFifthPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{beEmployeeSixthPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{beEmployeeSixthPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{beEmployeeSeventhPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{beEmployeeSeventhPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label>Back-end developer professional characteristics and weighting factors</label>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{beEmployeeFirstProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select first professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{beEmployeeFirstProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{beEmployeeSecondProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{beEmployeeSecondProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{beEmployeeThirdProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{beEmployeeThirdProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{beEmployeeFourthProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{beEmployeeFourthProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{beEmployeeFifthProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{beEmployeeFifthProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{beEmployeeSixthProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{beEmployeeSixthProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{beEmployeeSeventhProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{beEmployeeSeventhProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="fs">Full stack employee number</label>
+                    <input type="text" class="form-control" id="fs" th:field="*{fsEmployeeNumber}"
+                           placeholder="Full stack employee number"/>
+                </div>
+
+                <!--Full stack-->
+                <div class="form-group">
+                    <div class="form-group">
+                        <label>Full stack developer personal characteristics and weighting factors</label>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{fsEmployeeFirstPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select first personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{fsEmployeeFirstPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{fsEmployeeSecondPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{fsEmployeeSecondPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{fsEmployeeThirdPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{fsEmployeeThirdPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{fsEmployeeFourthPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{fsEmployeeFourthPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{fsEmployeeFifthPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{fsEmployeeFifthPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{fsEmployeeSixthPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{fsEmployeeSixthPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{fsEmployeeSeventhPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{fsEmployeeSeventhPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label>Full stack developer professional characteristics and weighting factors</label>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{fsEmployeeFirstProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select first professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{fsEmployeeFirstProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{fsEmployeeSecondProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{fsEmployeeSecondProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{fsEmployeeThirdProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{fsEmployeeThirdProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{fsEmployeeFourthProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{fsEmployeeFourthProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{fsEmployeeFifthProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{fsEmployeeFifthProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{fsEmployeeSixthProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{fsEmployeeSixthProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{fsEmployeeSeventhProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{fsEmployeeSeventhProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="db">DB employee number</label>
+                    <input type="text" class="form-control" id="db" th:field="*{dbEmployeeNumber}"
+                           placeholder="DB employee number"/>
+                </div>
+
+                <!--DB employee-->
+                <div class="form-group">
+                    <div class="form-group">
+                        <label>DB developer personal characteristics and weighting factors</label>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{dbEmployeeFirstPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select first personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{dbEmployeeFirstPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{dbEmployeeSecondPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{dbEmployeeSecondPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{dbEmployeeThirdPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{dbEmployeeThirdPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{dbEmployeeFourthPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{dbEmployeeFourthPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{dbEmployeeFifthPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{dbEmployeeFifthPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{dbEmployeeSixthPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{dbEmployeeSixthPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{dbEmployeeSeventhPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{dbEmployeeSeventhPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label>DB developer professional characteristics and weighting factors</label>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{dbEmployeeFirstProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select first professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{dbEmployeeFirstProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{dbEmployeeSecondProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{dbEmployeeSecondProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{dbEmployeeThirdProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{dbEmployeeThirdProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{dbEmployeeFourthProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{dbEmployeeFourthProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{dbEmployeeFifthProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{dbEmployeeFifthProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{dbEmployeeSixthProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{dbEmployeeSixthProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{dbEmployeeSeventhProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{dbEmployeeSeventhProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="inf">Information employee number</label>
+                    <input type="text" class="form-control" id="inf" th:field="*{infEmployeeNumber}"
+                           placeholder="Information employee number"/>
+                </div>
+
+                <!--Information developer-->
+                <div class="form-group">
+                    <div class="form-group">
+                        <label>Information developer personal characteristics and weighting factors</label>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{infEmployeeFirstPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select first personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{infEmployeeFirstPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{infEmployeeSecondPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{infEmployeeSecondPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{infEmployeeThirdPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{infEmployeeThirdPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{infEmployeeFourthPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{infEmployeeFourthPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{infEmployeeFifthPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{infEmployeeFifthPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{infEmployeeSixthPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{infEmployeeSixthPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{infEmployeeSeventhPersonalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second personal characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{infEmployeeSeventhPersonalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label>Information developer professional characteristics and weighting factors</label>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{infEmployeeFirstProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select first professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{infEmployeeFirstProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{infEmployeeSecondProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{infEmployeeSecondProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{infEmployeeThirdProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{infEmployeeThirdProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{infEmployeeFourthProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{infEmployeeFourthProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{infEmployeeFifthProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{infEmployeeFifthProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{infEmployeeSixthProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{infEmployeeSixthProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-inline">
+                            <select class="form-control" th:field="*{infEmployeeSeventhProfessionalCharacteristic}"
+                                    style="width: 290px">
+                                <option value="">Select second professional characteristic</option>
+                                <option th:each="commonPersonalData : ${commonPersonalDataList}"
+                                        th:value="${commonPersonalData.description}"
+                                        th:text="${commonPersonalData.description}">
+                                </option>
+                            </select>
+                            <select class="form-control" th:field="*{infEmployeeSeventhProfessionalWeightingFactor}"
+                                    style="width: 200px">
+                                <option value="">Select weighting factor</option>
+                                <option th:each="weightingFactor : ${weightingFactorList}"
+                                        th:value="${weightingFactor.weightingFactor}"
+                                        th:text="${weightingFactor.name}">
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label>Category</label>
-                        <select class="form-control" th:field="*{category.categoryName}" style="width: 145px">
-                        <option value="">Select Category</option>
+                    <select class="form-control" th:field="*{categoryName}" style="width: 145px">
+                        <option value="">Select project category</option>
                         <option th:each="category : ${categoryList}"
                                 th:value="${category.categoryName}"
                                 th:text="${category.categoryName}">

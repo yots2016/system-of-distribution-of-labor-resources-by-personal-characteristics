@@ -3,8 +3,7 @@ package com.batuhaniskr.project.model;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.Set;
+import java.util.*;
 
 @EqualsAndHashCode(exclude = {"category", "employeesSet", "projectEmployeeRoleSet"})
 @Getter
@@ -40,13 +39,27 @@ public class Project {
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
+    public void addEmployee (Employee employee) {
+        if (employeesSet == null) {
+            employeesSet = new HashSet<>();
+        }
+        this.employeesSet.add(employee);
+    }
+
     @Column(nullable = false)
-    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
     private Set<Employee> employeesSet;
 
     @Column(nullable = false)
-    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
     private Set<ProjectEmployeeRole> projectEmployeeRoleSet;
+
+    public void addProjectEmployeeRole(ProjectEmployeeRole projectEmployeeRole) {
+        if (projectEmployeeRoleSet == null) {
+            projectEmployeeRoleSet = new HashSet<>();
+        }
+        projectEmployeeRoleSet.add(projectEmployeeRole);
+    }
 
     @PrePersist
     public void onPrePersist() {

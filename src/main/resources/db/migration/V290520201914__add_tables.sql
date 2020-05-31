@@ -87,7 +87,6 @@ CREATE TABLE project_employee_role
     employee_role    character varying(400) NOT NULL,
     employees_number bigint                 NOT NULL DEFAULT 0,
     project_id       bigint                 NOT NULL,
-    UNIQUE (employee_role),
     PRIMARY KEY (id),
     FOREIGN KEY (project_id)
         REFERENCES project (id) MATCH SIMPLE
