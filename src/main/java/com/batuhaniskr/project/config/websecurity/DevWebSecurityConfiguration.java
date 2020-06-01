@@ -11,7 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-@Profile({"herokudev", "herokuprod", "h2dev"})
+@Profile({"herokudev", "herokuprod", "h2dev", "psdev"})
 @EnableWebSecurity
 @Configuration
 public class DevWebSecurityConfiguration extends WebSecurityConfigurerAdapter {
