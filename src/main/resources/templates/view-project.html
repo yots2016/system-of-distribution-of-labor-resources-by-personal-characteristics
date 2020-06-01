@@ -51,14 +51,14 @@
 
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3>Projects List
-            </h3>
+            <h3>Employees who were selected by the system for the project</h3>
             <table class="table table-striped table-hover" id="projectTable">
                 <thead>
                 <tr class="success">
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Email</th>
+                    <th>Project role</th>
                     <th>Position</th>
                     <th>Current project name</th>
                     <th>Actions</th>
@@ -69,6 +69,7 @@
                     <td class="employeefirstname" th:text="${employee.firstName}"></td>
                     <td class="employeelastname" th:text="${employee.lastName}"></td>
                     <td th:text="${employee.email}"></td>
+                    <td></td>
                     <td class="position" th:text="${employee.position}"></td>
                     <td th:text="${employee.project?.name}"></td>
                     <td>
