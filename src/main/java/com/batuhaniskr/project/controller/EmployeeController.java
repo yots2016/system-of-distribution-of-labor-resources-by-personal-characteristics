@@ -30,7 +30,7 @@ public class EmployeeController {
 
     @RequestMapping("")
     public String showEmployees(Model model, @RequestParam("page") Optional<Integer> pageNumber,
-                                @RequestParam("page") Optional<Integer> size) {
+                                @RequestParam("size") Optional<Integer> size) {
         //TODO 30.05.2020 Refactor with Optional::orElse()
         pageNumber.ifPresent(number -> currentPage = number);
         size.ifPresent(sizeNumber -> pagesSize = sizeNumber);
