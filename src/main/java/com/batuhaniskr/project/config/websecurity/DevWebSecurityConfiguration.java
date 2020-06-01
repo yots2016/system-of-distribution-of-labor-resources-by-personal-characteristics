@@ -43,7 +43,7 @@ public class DevWebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .disable()
                 .authorizeRequests()
                 .antMatchers(
-                        "/",
+//                        "/",
                         "/login",
                         "/registration",
                         "/js/**",

@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-@RequestMapping("/projects")
+@RequestMapping({"/projects", "/"})
 @RequiredArgsConstructor
 @Controller
 public class MainController {
