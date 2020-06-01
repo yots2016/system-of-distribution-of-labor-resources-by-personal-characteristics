@@ -8,7 +8,7 @@ public class NewProjectDto {
     private String name;
 
     //Project manager employee
-    private Integer pmEmployeeNumber;
+    private Integer pmEmployeeNumber = 0;
 
     private String pmEmployeeFirstPersonalCharacteristic;
     private String pmEmployeeFirstPersonalWeightingFactor;
@@ -41,7 +41,7 @@ public class NewProjectDto {
     private String pmEmployeeSeventhProfessionalWeightingFactor;
 
     //Business analyst employee
-    private Integer baEmployeeNumber;
+    private Integer baEmployeeNumber = 0;
 
     private String baEmployeeFirstPersonalCharacteristic;
     private String baEmployeeFirstPersonalWeightingFactor;
@@ -74,7 +74,7 @@ public class NewProjectDto {
     private String baEmployeeSeventhProfessionalWeightingFactor;
 
     //System analyst employee
-    private Integer saEmployeeNumber;
+    private Integer saEmployeeNumber = 0;
 
     private String saEmployeeFirstPersonalCharacteristic;
     private String saEmployeeFirstPersonalWeightingFactor;
@@ -107,7 +107,7 @@ public class NewProjectDto {
     private String saEmployeeSeventhProfessionalWeightingFactor;
 
     //Front-end employee
-    private Integer feEmployeeNumber;
+    private Integer feEmployeeNumber = 0;
 
     private String feEmployeeFirstPersonalCharacteristic;
     private String feEmployeeFirstPersonalWeightingFactor;
@@ -140,7 +140,7 @@ public class NewProjectDto {
     private String feEmployeeSeventhProfessionalWeightingFactor;
 
     //Back-end employee
-    private Integer beEmployeeNumber;
+    private Integer beEmployeeNumber = 0;
 
     private String beEmployeeFirstPersonalCharacteristic;
     private String beEmployeeFirstPersonalWeightingFactor;
@@ -173,7 +173,7 @@ public class NewProjectDto {
     private String beEmployeeSeventhProfessionalWeightingFactor;
 
     //Full stack employee
-    private Integer fsEmployeeNumber;
+    private Integer fsEmployeeNumber = 0;
 
     private String fsEmployeeFirstPersonalCharacteristic;
     private String fsEmployeeFirstPersonalWeightingFactor;
@@ -206,7 +206,7 @@ public class NewProjectDto {
     private String fsEmployeeSeventhProfessionalWeightingFactor;
 
     //DB employee
-    private Integer dbEmployeeNumber;
+    private Integer dbEmployeeNumber = 0;
 
     private String dbEmployeeFirstPersonalCharacteristic;
     private String dbEmployeeFirstPersonalWeightingFactor;
@@ -239,7 +239,7 @@ public class NewProjectDto {
     private String dbEmployeeSeventhProfessionalWeightingFactor;
 
     //Information developer employee
-    private Integer infEmployeeNumber;
+    private Integer infEmployeeNumber = 0;
 
     private String infEmployeeFirstPersonalCharacteristic;
     private String infEmployeeFirstPersonalWeightingFactor;
