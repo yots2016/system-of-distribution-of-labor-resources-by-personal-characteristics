@@ -1,14 +1,15 @@
 package com.batuhaniskr.project.controller;
 
+import com.batuhaniskr.project.dto.NewEmployeeDto;
 import com.batuhaniskr.project.model.Employee;
-import com.batuhaniskr.project.service.EmployeeService;
+import com.batuhaniskr.project.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -20,6 +21,9 @@ import java.util.stream.IntStream;
 public class EmployeeController {
 
     private final EmployeeService employeeService;
+    private final CommonPersonalDataService commonPersonalDataService;
+    private final CommonProfessionalDataService commonProfessionalDataService;
+    private final WeightingFactorService weightingFactorService;
 
     private int currentPage = 1;
     private int pagesSize = 10;
@@ -45,5 +49,23 @@ public class EmployeeController {
         }
 
         return "employees";
+    }
+
+    @RequestMapping(value = "/add")
+    public String addProject(@Valid Model model) {
+        model.addAttribute("newEmployeeDto", new NewEmployeeDto());
+        model.addAttribute("commonPersonalDataList", commonPersonalDataService.getAllCommonPersonalData());
+        model.addAttribute("commonProfessionalDataList", commonProfessionalDataService.getAllCommonProfessionalData());
+        model.addAttribute("weightingFactorList", weightingFactorService.getAllWeightingFactor());
+
+        return "add-employee";
+    }
+
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public String save(NewEmployeeDto newEmployeeDto) {
+        employeeService.saveEmployee(newEmployeeDto);
+
+        List<Employee> allEmployees = employeeService.getAllEmployees();
+        return "redirect:/employees";
     }
 }
