@@ -25,15 +25,11 @@ public class EmployeeController {
     private final CommonProfessionalDataService commonProfessionalDataService;
     private final WeightingFactorService weightingFactorService;
 
-    private int currentPage = 1;
-    private int pagesSize = 10;
-
     @RequestMapping("")
     public String showEmployees(Model model, @RequestParam("page") Optional<Integer> pageNumber,
                                 @RequestParam("size") Optional<Integer> size) {
-        //TODO 30.05.2020 Refactor with Optional::orElse()
-        pageNumber.ifPresent(number -> currentPage = number);
-        size.ifPresent(sizeNumber -> pagesSize = sizeNumber);
+        int currentPage = pageNumber.orElse(1);
+        int pagesSize = size.orElse(5);
 
         Pageable pageable = new PageRequest(currentPage - 1, pagesSize);
         Page<Employee> employeesPage = employeeService.getAllEmployees(pageable);
@@ -42,7 +38,7 @@ public class EmployeeController {
 
         int totalPages = employeesPage.getTotalPages();
         if (totalPages > 0) {
-            List<Integer> pagesNumbers = IntStream.rangeClosed(0, totalPages)
+            List<Integer> pagesNumbers = IntStream.rangeClosed(1, totalPages)
                     .boxed()
                     .collect(Collectors.toList());
             model.addAttribute("pagesNumbers", pagesNumbers);
