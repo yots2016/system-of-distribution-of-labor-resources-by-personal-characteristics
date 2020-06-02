@@ -37,6 +37,7 @@ public class EmployeeService {
         employee.setPosition(newEmployeeDto.getPosition());
         employeeRepository.save(employee);
 
+        saveFirstEmployeeCharasterictics(newEmployeeDto, employee);
         saveSecondEmployeeCharasterictics(newEmployeeDto, employee);
         saveThirdEmployeeCharasterictics(newEmployeeDto, employee);
         saveFourthEmployeeCharasterictics(newEmployeeDto, employee);
