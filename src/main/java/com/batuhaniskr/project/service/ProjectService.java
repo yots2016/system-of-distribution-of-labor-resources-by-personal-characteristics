@@ -74,16 +74,13 @@ public class ProjectService {
 
         Set<ProjectEmployeeRole> projectEmployeeRoleSet = project.getProjectEmployeeRoleSet();
         projectEmployeeRoleSet.stream()
-                .filter(projectEmployeeRole -> projectEmployeeRole != null)
+                .filter(Objects::nonNull)
                 .filter(projectEmployeeRole -> projectEmployeeRole.getEmployeesNumber() > 0)
                 .forEach(projectEmployeeRole -> {
                     for (int i = 0; i < projectEmployeeRole.getEmployeesNumber(); i++) {
                         findCorrespondingEmployee(project, projectEmployeeRole);
                     }
                 });
-
-
-        List<Project> all = projectRepository.findAll();
     }
 
     private void saveInfProjectEmployeeRole(NewProjectDto newProjectDto, Project project) {
@@ -484,13 +481,13 @@ public class ProjectService {
     }
 
     private void findCorrespondingEmployee(Project project, ProjectEmployeeRole projectEmployeeRole) {
-        System.out.println();
         Map<String, Short> personal = projectEmployeeRole.getProjectEmployeeRolePersonalDataSet().stream()
-                .map(projectEmployeeRolePersonalData -> Pair.of(projectEmployeeRolePersonalData.getCommonPersonalData().getDescription(), projectEmployeeRolePersonalData.getWeightingFactor().getWeightingFactor()))
-                .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond));
+                .map(projectEmployeeRolePersonalData -> Pair.of(projectEmployeeRolePersonalData.getCommonPersonalData().getDescription(),
+                        projectEmployeeRolePersonalData.getWeightingFactor().getWeightingFactor()))
+                .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond, this::mergeProjectEmployeeRoles));
         Map<String, Short> professional = projectEmployeeRole.getProjectEmployeeRoleProfessionalDataSet().stream()
                 .map(data -> Pair.of(data.getCommonProfessionalData().getDescription(), data.getWeightingFactor().getWeightingFactor()))
-                .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond));
+                .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond, this::mergeProjectEmployeeRoles));
         Map<String, Short> characteristics = Stream.concat(personal.entrySet().stream(), professional.entrySet().stream())
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
@@ -498,18 +495,22 @@ public class ProjectService {
         employeeRepository
                 .findAll().stream()
                 .filter(employee -> {
+                    System.out.println();
                     Map<String, Short> personalCharacteristics = employee.getEmployeePersonalDataSet().stream()
-                            .map(employeePersonalData -> Pair.of(employeePersonalData.getCommonPersonalData().getDescription(), employeePersonalData.getWeightingFactor().getWeightingFactor()))
-                            .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond));
+                            .map(employeePersonalData -> Pair.of(employeePersonalData.getCommonPersonalData().getDescription(),
+                                    employeePersonalData.getWeightingFactor().getWeightingFactor()))
+                            .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond, this::mergeEmployees));
                     Map<String, Short> professionalCharacteristics = employee.getEmployeeProfessionalDataSet().stream()
-                            .map(employeeProfessionalData -> Pair.of(employeeProfessionalData.getCommonProfessionalData().getDescription(), employeeProfessionalData.getWeightingFactor().getWeightingFactor()))
-                            .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond));
-                    Map<String, Short> emplCharact = Stream.concat(professionalCharacteristics.entrySet().stream(), personalCharacteristics.entrySet().stream())
+                            .map(employeeProfessionalData -> Pair.of(employeeProfessionalData.getCommonProfessionalData().getDescription(),
+                                    employeeProfessionalData.getWeightingFactor().getWeightingFactor()))
+                            .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond, this::mergeEmployees));
+                    Map<String, Short> emplCharact = Stream.concat(professionalCharacteristics.entrySet().stream(),
+                            personalCharacteristics.entrySet().stream())
                             .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
                     return checkMatch(emplCharact, characteristics);
                 })
+                .filter(employee -> employee.getProject() == null)
                 .findFirst()
-//                .filter(employee -> employee.getProject() == null)
                 .ifPresent(employee -> {
                     employee.setProject(project);
                     employeeRepository.save(employee);
@@ -518,18 +519,26 @@ public class ProjectService {
 
     }
 
-    private boolean checkMatch(Map<String, Short> emplCharact, Map<String, Short> characteristics) {
-        boolean allMatch = emplCharact.entrySet().stream()
+    private Short mergeEmployees(Short short1, Short short2) {
+        Short aShort = short1 > short2 ? short1 : short2;
+        return aShort;
+    }
+
+    private Short mergeProjectEmployeeRoles(Short short1, Short short2) {
+        return short1 > short2 ? short2 : short1;
+    }
+
+    private boolean checkMatch(Map<String, Short> emplCharact, Map<String, Short> roleCharacteristics) {
+        return roleCharacteristics.entrySet().stream()
                 .allMatch(entry -> {
-                    boolean containsKey = characteristics.containsKey(entry.getKey());
+                    boolean containsKey = emplCharact.containsKey(entry.getKey());
                     if (containsKey) {
-                        Short weightingFactor = characteristics.get(entry.getKey());
-                        return entry.getValue() >= weightingFactor;
+                        Short weightingFactor = emplCharact.get(entry.getKey());
+                        return entry.getValue() <= weightingFactor;
                     } else {
                         return false;
                     }
                 });
-        return allMatch;
     }
 
     public void deleteProject(Long id) {
