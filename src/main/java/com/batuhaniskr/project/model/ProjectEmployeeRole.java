@@ -31,23 +31,17 @@ public class ProjectEmployeeRole {
 
     @Column(nullable = false)
     @OneToMany(mappedBy = "projectEmployeeRole", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Set<ProjectEmployeeRolePersonalData> projectEmployeeRolePersonalDataSet;
+    private Set<ProjectEmployeeRolePersonalData> projectEmployeeRolePersonalDataSet = new HashSet<>();
 
     @Column(nullable = false)
     @OneToMany(mappedBy = "projectEmployeeRole", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Set<ProjectEmployeeRoleProfessionalData> projectEmployeeRoleProfessionalDataSet;
+    private Set<ProjectEmployeeRoleProfessionalData> projectEmployeeRoleProfessionalDataSet = new HashSet<>();
 
     public void setProjectEmployeeRolePersonalDataSet(ProjectEmployeeRolePersonalData projectEmployeeRolePersonalData) {
-        if (projectEmployeeRolePersonalDataSet == null) {
-            projectEmployeeRolePersonalDataSet = new HashSet<>();
-        }
         this.projectEmployeeRolePersonalDataSet.add(projectEmployeeRolePersonalData);
     }
 
     public void setProjectEmployeeRoleProfessionalDataSet(ProjectEmployeeRoleProfessionalData projectEmployeeRoleProfessionalData) {
-        if (projectEmployeeRoleProfessionalDataSet == null) {
-            projectEmployeeRoleProfessionalDataSet = new HashSet<>();
-        }
         this.projectEmployeeRoleProfessionalDataSet.add(projectEmployeeRoleProfessionalData);
     }
 }
