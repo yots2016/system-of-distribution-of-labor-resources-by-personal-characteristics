@@ -52,12 +52,9 @@ public class Project {
 
     @Column(nullable = false)
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
-    private Set<ProjectEmployeeRole> projectEmployeeRoleSet;
+    private Set<ProjectEmployeeRole> projectEmployeeRoleSet = new HashSet<>();
 
     public void addProjectEmployeeRole(ProjectEmployeeRole projectEmployeeRole) {
-        if (projectEmployeeRoleSet == null) {
-            projectEmployeeRoleSet = new HashSet<>();
-        }
         projectEmployeeRoleSet.add(projectEmployeeRole);
     }
 
