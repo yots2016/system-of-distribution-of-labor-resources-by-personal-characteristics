@@ -16,22 +16,22 @@
             <form th:object="${newEmployeeDto}" th:action="@{save}" action="#" method="post">
                 <div class="form-group">
                     <label for="fname">First name</label>
-                    <input type="text" class="form-control" id="fname" th:field="*{firstName}" placeholder="Name"/>
+                    <input type="text" class="form-control" id="fname" th:field="*{firstName}" placeholder="Name" required/>
                 </div>
 
                 <div class="form-group">
                     <label for="lname">Last name</label>
-                    <input type="text" class="form-control" id="lname" th:field="*{lastName}" placeholder="Name"/>
+                    <input type="text" class="form-control" id="lname" th:field="*{lastName}" placeholder="Name" required/>
                 </div>
 
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="text" class="form-control" id="email" th:field="*{email}" placeholder="Email"/>
+                    <input type="text" class="form-control" id="email" th:field="*{email}" placeholder="Email" required/>
                 </div>
 
                 <div class="form-group">
                     <label for="position">Position</label>
-                    <input type="text" class="form-control" id="position" th:field="*{position}" placeholder="Position"/>
+                    <input type="text" class="form-control" id="position" th:field="*{position}" placeholder="Position" required/>
                 </div>
 
                 <!--New Employee-->
@@ -41,7 +41,7 @@
 
                         <div class="form-inline">
                             <select class="form-control" th:field="*{employeeFirstPersonalCharacteristic}"
-                                    style="width: 290px">
+                                    style="width: 290px" required>
                                 <option value="">Select first personal characteristic</option>
                                 <option th:each="commonPersonalData : ${commonPersonalDataList}"
                                         th:value="${commonPersonalData.description}"
@@ -49,7 +49,7 @@
                                 </option>
                             </select>
                             <select class="form-control" th:field="*{employeeFirstPersonalWeightingFactor}"
-                                    style="width: 200px">
+                                    style="width: 200px" required>
                                 <option value="">Select weighting factor</option>
                                 <option th:each="weightingFactor : ${weightingFactorList}"
                                         th:value="${weightingFactor.weightingFactor}"
@@ -179,7 +179,7 @@
 
                         <div class="form-inline">
                             <select class="form-control" th:field="*{employeeFirstProfessionalCharacteristic}"
-                                    style="width: 290px">
+                                    style="width: 290px" required>
                                 <option value="">Select first professional characteristic</option>
                                 <option th:each="commonPersonalData : ${commonProfessionalDataList}"
                                         th:value="${commonPersonalData.description}"
@@ -187,7 +187,7 @@
                                 </option>
                             </select>
                             <select class="form-control" th:field="*{employeeFirstProfessionalWeightingFactor}"
-                                    style="width: 200px">
+                                    style="width: 200px" required>
                                 <option value="">Select weighting factor</option>
                                 <option th:each="weightingFactor : ${weightingFactorList}"
                                         th:value="${weightingFactor.weightingFactor}"
