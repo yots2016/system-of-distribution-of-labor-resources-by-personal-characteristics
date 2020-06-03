@@ -64,4 +64,11 @@ public class EmployeeController {
         List<Employee> allEmployees = employeeService.getAllEmployees();
         return "redirect:/employees";
     }
+
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    public String deleteProject(@PathVariable("id") Long id) {
+        employeeService.deleteEmployee(id);
+
+        return "redirect:/employees";
+    }
 }
