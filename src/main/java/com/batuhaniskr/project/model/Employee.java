@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@EqualsAndHashCode(exclude = {"project", "employeePersonalDataSet", "employeeProfessionalDataSet"})
+@EqualsAndHashCode(exclude = {"project", "employeePersonalDataSet", "employeeProfessionalDataSet", "projectEmployeeRole"})
 @Getter
 @Setter
 @RequiredArgsConstructor
@@ -32,25 +32,29 @@ public class Employee {
     private String position;
 
     @ManyToOne
+    @JoinColumn(name = "project_employee_role_id")
+    private ProjectEmployeeRole projectEmployeeRole;
+
+    @ManyToOne
     @JoinColumn(name = "project_id")
     private Project project;
 
     @Column(nullable = false)
-    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
     private Set<EmployeePersonalData> employeePersonalDataSet;
 
     @Column(nullable = false)
-    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
     private Set<EmployeeProfessionalData> employeeProfessionalDataSet;
 
-    public void setEmployeePersonalDataSet(EmployeePersonalData employeePersonalData) {
+    public void setEmployeePersonalData(EmployeePersonalData employeePersonalData) {
         if (employeePersonalDataSet == null) {
             employeePersonalDataSet = new HashSet<>();
         }
         this.employeePersonalDataSet.add(employeePersonalData);
     }
 
-    public void setEmployeeProfessionalDataSet(EmployeeProfessionalData employeeProfessionalData) {
+    public void setEmployeeProfessionalData(EmployeeProfessionalData employeeProfessionalData) {
         if (employeeProfessionalDataSet == null) {
             employeeProfessionalDataSet = new HashSet<>();
         }

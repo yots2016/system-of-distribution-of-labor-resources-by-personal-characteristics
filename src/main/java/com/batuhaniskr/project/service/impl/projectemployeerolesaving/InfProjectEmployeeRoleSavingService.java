@@ -56,7 +56,7 @@ public class InfProjectEmployeeRoleSavingService  implements ProjectEmployeeRole
                     .findByWeightingFactor(Short.valueOf(newProjectDto.getInfEmployeeSecondPersonalWeightingFactor())));
             secondProjectEmployeeRolePersonalData.setProjectEmployeeRole(infProjectEmployeeRole);
             projectEmployeeRolePersonalDataRepository.save(secondProjectEmployeeRolePersonalData);
-            infProjectEmployeeRole.setProjectEmployeeRolePersonalDataSet(secondProjectEmployeeRolePersonalData);
+            infProjectEmployeeRole.setProjectEmployeeRolePersonalData(secondProjectEmployeeRolePersonalData);
             projectEmployeeRoleRepository.save(infProjectEmployeeRole);
         }
 
@@ -68,7 +68,7 @@ public class InfProjectEmployeeRoleSavingService  implements ProjectEmployeeRole
                     .findByWeightingFactor(Short.valueOf(newProjectDto.getInfEmployeeSecondProfessionalWeightingFactor())));
             secondProjectEmployeeRoleProfessionalData.setProjectEmployeeRole(infProjectEmployeeRole);
             projectEmployeeRoleProfessionalDataRepository.save(secondProjectEmployeeRoleProfessionalData);
-            infProjectEmployeeRole.setProjectEmployeeRoleProfessionalDataSet(secondProjectEmployeeRoleProfessionalData);
+            infProjectEmployeeRole.setProjectEmployeeRoleProfessionalData(secondProjectEmployeeRoleProfessionalData);
             projectEmployeeRoleRepository.save(infProjectEmployeeRole);
         }
     }
@@ -82,7 +82,7 @@ public class InfProjectEmployeeRoleSavingService  implements ProjectEmployeeRole
                     .findByWeightingFactor(Short.valueOf(newProjectDto.getInfEmployeeFirstPersonalWeightingFactor())));
             firstProjectEmployeeRolePersonalData.setProjectEmployeeRole(infProjectEmployeeRole);
             projectEmployeeRolePersonalDataRepository.save(firstProjectEmployeeRolePersonalData);
-            infProjectEmployeeRole.setProjectEmployeeRolePersonalDataSet(firstProjectEmployeeRolePersonalData);
+            infProjectEmployeeRole.setProjectEmployeeRolePersonalData(firstProjectEmployeeRolePersonalData);
         }
 
         if (!newProjectDto.getInfEmployeeFirstProfessionalCharacteristic().isEmpty()) {
@@ -93,7 +93,7 @@ public class InfProjectEmployeeRoleSavingService  implements ProjectEmployeeRole
                     .findByWeightingFactor(Short.valueOf(newProjectDto.getInfEmployeeFirstProfessionalWeightingFactor())));
             firstProjectEmployeeRoleProfessionalData.setProjectEmployeeRole(infProjectEmployeeRole);
             projectEmployeeRoleProfessionalDataRepository.save(firstProjectEmployeeRoleProfessionalData);
-            infProjectEmployeeRole.setProjectEmployeeRoleProfessionalDataSet(firstProjectEmployeeRoleProfessionalData);
+            infProjectEmployeeRole.setProjectEmployeeRoleProfessionalData(firstProjectEmployeeRoleProfessionalData);
         }
         projectEmployeeRoleRepository.save(infProjectEmployeeRole);
     }
@@ -107,7 +107,7 @@ public class InfProjectEmployeeRoleSavingService  implements ProjectEmployeeRole
                     .findByWeightingFactor(Short.valueOf(newProjectDto.getInfEmployeeThirdPersonalWeightingFactor())));
             thirdProjectEmployeeRolePersonalData.setProjectEmployeeRole(infProjectEmployeeRole);
             projectEmployeeRolePersonalDataRepository.save(thirdProjectEmployeeRolePersonalData);
-            infProjectEmployeeRole.setProjectEmployeeRolePersonalDataSet(thirdProjectEmployeeRolePersonalData);
+            infProjectEmployeeRole.setProjectEmployeeRolePersonalData(thirdProjectEmployeeRolePersonalData);
             projectEmployeeRoleRepository.save(infProjectEmployeeRole);
         }
 
@@ -119,7 +119,7 @@ public class InfProjectEmployeeRoleSavingService  implements ProjectEmployeeRole
                     .findByWeightingFactor(Short.valueOf(newProjectDto.getInfEmployeeThirdProfessionalWeightingFactor())));
             thirdProjectEmployeeRoleProfessionalData.setProjectEmployeeRole(infProjectEmployeeRole);
             projectEmployeeRoleProfessionalDataRepository.save(thirdProjectEmployeeRoleProfessionalData);
-            infProjectEmployeeRole.setProjectEmployeeRoleProfessionalDataSet(thirdProjectEmployeeRoleProfessionalData);
+            infProjectEmployeeRole.setProjectEmployeeRoleProfessionalData(thirdProjectEmployeeRoleProfessionalData);
             projectEmployeeRoleRepository.save(infProjectEmployeeRole);
         }
     }
@@ -133,7 +133,7 @@ public class InfProjectEmployeeRoleSavingService  implements ProjectEmployeeRole
                     .findByWeightingFactor(Short.valueOf(newProjectDto.getInfEmployeeFourthPersonalWeightingFactor())));
             fourthProjectEmployeeRolePersonalData.setProjectEmployeeRole(infProjectEmployeeRole);
             projectEmployeeRolePersonalDataRepository.save(fourthProjectEmployeeRolePersonalData);
-            infProjectEmployeeRole.setProjectEmployeeRolePersonalDataSet(fourthProjectEmployeeRolePersonalData);
+            infProjectEmployeeRole.setProjectEmployeeRolePersonalData(fourthProjectEmployeeRolePersonalData);
             projectEmployeeRoleRepository.save(infProjectEmployeeRole);
         }
 
@@ -145,7 +145,7 @@ public class InfProjectEmployeeRoleSavingService  implements ProjectEmployeeRole
                     .findByWeightingFactor(Short.valueOf(newProjectDto.getInfEmployeeFourthProfessionalWeightingFactor())));
             fourthProjectEmployeeRoleProfessionalData.setProjectEmployeeRole(infProjectEmployeeRole);
             projectEmployeeRoleProfessionalDataRepository.save(fourthProjectEmployeeRoleProfessionalData);
-            infProjectEmployeeRole.setProjectEmployeeRoleProfessionalDataSet(fourthProjectEmployeeRoleProfessionalData);
+            infProjectEmployeeRole.setProjectEmployeeRoleProfessionalData(fourthProjectEmployeeRoleProfessionalData);
             projectEmployeeRoleRepository.save(infProjectEmployeeRole);
         }
     }
@@ -159,7 +159,7 @@ public class InfProjectEmployeeRoleSavingService  implements ProjectEmployeeRole
                     .findByWeightingFactor(Short.valueOf(newProjectDto.getInfEmployeeFifthPersonalWeightingFactor())));
             fifthProjectEmployeeRolePersonalData.setProjectEmployeeRole(infProjectEmployeeRole);
             projectEmployeeRolePersonalDataRepository.save(fifthProjectEmployeeRolePersonalData);
-            infProjectEmployeeRole.setProjectEmployeeRolePersonalDataSet(fifthProjectEmployeeRolePersonalData);
+            infProjectEmployeeRole.setProjectEmployeeRolePersonalData(fifthProjectEmployeeRolePersonalData);
             projectEmployeeRoleRepository.save(infProjectEmployeeRole);
         }
 
@@ -171,7 +171,7 @@ public class InfProjectEmployeeRoleSavingService  implements ProjectEmployeeRole
                     .findByWeightingFactor(Short.valueOf(newProjectDto.getInfEmployeeFifthProfessionalWeightingFactor())));
             fifthProjectEmployeeRoleProfessionalData.setProjectEmployeeRole(infProjectEmployeeRole);
             projectEmployeeRoleProfessionalDataRepository.save(fifthProjectEmployeeRoleProfessionalData);
-            infProjectEmployeeRole.setProjectEmployeeRoleProfessionalDataSet(fifthProjectEmployeeRoleProfessionalData);
+            infProjectEmployeeRole.setProjectEmployeeRoleProfessionalData(fifthProjectEmployeeRoleProfessionalData);
             projectEmployeeRoleRepository.save(infProjectEmployeeRole);
         }
     }
@@ -185,7 +185,7 @@ public class InfProjectEmployeeRoleSavingService  implements ProjectEmployeeRole
                     .findByWeightingFactor(Short.valueOf(newProjectDto.getInfEmployeeFirstPersonalWeightingFactor())));
             sixthProjectEmployeeRolePersonalData.setProjectEmployeeRole(infProjectEmployeeRole);
             projectEmployeeRolePersonalDataRepository.save(sixthProjectEmployeeRolePersonalData);
-            infProjectEmployeeRole.setProjectEmployeeRolePersonalDataSet(sixthProjectEmployeeRolePersonalData);
+            infProjectEmployeeRole.setProjectEmployeeRolePersonalData(sixthProjectEmployeeRolePersonalData);
             projectEmployeeRoleRepository.save(infProjectEmployeeRole);
         }
 
@@ -197,7 +197,7 @@ public class InfProjectEmployeeRoleSavingService  implements ProjectEmployeeRole
                     .findByWeightingFactor(Short.valueOf(newProjectDto.getInfEmployeeSixthProfessionalWeightingFactor())));
             sixthProjectEmployeeRoleProfessionalData.setProjectEmployeeRole(infProjectEmployeeRole);
             projectEmployeeRoleProfessionalDataRepository.save(sixthProjectEmployeeRoleProfessionalData);
-            infProjectEmployeeRole.setProjectEmployeeRoleProfessionalDataSet(sixthProjectEmployeeRoleProfessionalData);
+            infProjectEmployeeRole.setProjectEmployeeRoleProfessionalData(sixthProjectEmployeeRoleProfessionalData);
             projectEmployeeRoleRepository.save(infProjectEmployeeRole);
         }
     }
@@ -211,7 +211,7 @@ public class InfProjectEmployeeRoleSavingService  implements ProjectEmployeeRole
                     .findByWeightingFactor(Short.valueOf(newProjectDto.getInfEmployeeSeventhPersonalWeightingFactor())));
             seventhProjectEmployeeRolePersonalData.setProjectEmployeeRole(infProjectEmployeeRole);
             projectEmployeeRolePersonalDataRepository.save(seventhProjectEmployeeRolePersonalData);
-            infProjectEmployeeRole.setProjectEmployeeRolePersonalDataSet(seventhProjectEmployeeRolePersonalData);
+            infProjectEmployeeRole.setProjectEmployeeRolePersonalData(seventhProjectEmployeeRolePersonalData);
             projectEmployeeRoleRepository.save(infProjectEmployeeRole);
         }
 
@@ -223,7 +223,7 @@ public class InfProjectEmployeeRoleSavingService  implements ProjectEmployeeRole
                     .findByWeightingFactor(Short.valueOf(newProjectDto.getInfEmployeeSeventhProfessionalWeightingFactor())));
             seventhProjectEmployeeRoleProfessionalData.setProjectEmployeeRole(infProjectEmployeeRole);
             projectEmployeeRoleProfessionalDataRepository.save(seventhProjectEmployeeRoleProfessionalData);
-            infProjectEmployeeRole.setProjectEmployeeRoleProfessionalDataSet(seventhProjectEmployeeRoleProfessionalData);
+            infProjectEmployeeRole.setProjectEmployeeRoleProfessionalData(seventhProjectEmployeeRoleProfessionalData);
             projectEmployeeRoleRepository.save(infProjectEmployeeRole);
         }
     }
