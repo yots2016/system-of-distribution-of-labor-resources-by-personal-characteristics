@@ -40,7 +40,7 @@ public class RecruitmentServiceImpl implements RecruitmentService {
                 .filter(employee -> employee.getProject() == null)
                 .filter(employee -> checkEmployeeAndRoleMatch(roleCharacteristics, employee))
                 .findFirst()
-                .ifPresent(employee -> saveEmployee(project, employee));
+                .ifPresent(employee -> saveEmployee(project, employee, projectEmployeeRole));
 
     }
 
@@ -49,9 +49,11 @@ public class RecruitmentServiceImpl implements RecruitmentService {
         return checkMatch(employeeCharacteristics, roleCharacteristics);
     }
 
-    private void saveEmployee(Project project, Employee employee) {
+    private void saveEmployee(Project project, Employee employee, ProjectEmployeeRole projectEmployeeRole) {
+        employee.setProjectEmployeeRole(projectEmployeeRole);
         employee.setProject(project);
         employeeRepository.save(employee);
+        projectEmployeeRole.setEmployee(employee);
         project.addEmployee(employee);
     }
 

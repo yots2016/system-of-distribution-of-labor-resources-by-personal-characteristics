@@ -58,20 +58,20 @@
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Email</th>
-                    <th>Project role</th>
                     <th>Position</th>
                     <th>Current project name</th>
+                    <th>Project role</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="employee : ${employeesPage}" id="projects" class="success">
-                    <td class="employeefirstname" th:text="${employee.firstName}"></td>
-                    <td class="employeelastname" th:text="${employee.lastName}"></td>
+                    <td th:text="${employee.firstName}"></td>
+                    <td th:text="${employee.lastName}"></td>
                     <td th:text="${employee.email}"></td>
-                    <td></td>
-                    <td class="position" th:text="${employee.position}"></td>
+                    <td th:text="${employee.position}"></td>
                     <td th:text="${employee.project?.name}"></td>
+                    <td th:text="${employee.getProjectEmployeeRole().employeeRole}"></td>
                     <td>
                         <!--TODO 30.05.2020 Implement-->
 <!--                        <a th:href="@{employees/delete/{id}(id=${project.id})}" class="btn btn-danger">Delete</a>-->

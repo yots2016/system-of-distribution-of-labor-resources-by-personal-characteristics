@@ -59,7 +59,7 @@ public class EmployeeService {
                     .findByWeightingFactor(Short.valueOf(newEmployeeDto.getEmployeeFirstPersonalWeightingFactor())));
             firstEmployeePersonalData.setEmployee(employee);
             employeePersonalDataRepository.save(firstEmployeePersonalData);
-            employee.setEmployeePersonalDataSet(firstEmployeePersonalData);
+            employee.setEmployeePersonalData(firstEmployeePersonalData);
             employeeRepository.save(employee);
         }
 
@@ -71,7 +71,7 @@ public class EmployeeService {
                     .findByWeightingFactor(Short.valueOf(newEmployeeDto.getEmployeeFirstProfessionalWeightingFactor())));
             firstEmployeeProfessionalData.setEmployee(employee);
             employeeProfessionalDataRepository.save(firstEmployeeProfessionalData);
-            employee.setEmployeeProfessionalDataSet(firstEmployeeProfessionalData);
+            employee.setEmployeeProfessionalData(firstEmployeeProfessionalData);
             employeeRepository.save(employee);
         }
     }
@@ -85,7 +85,7 @@ public class EmployeeService {
                     .findByWeightingFactor(Short.valueOf(newEmployeeDto.getEmployeeSecondPersonalWeightingFactor())));
             secondEmployeePersonalData.setEmployee(employee);
             employeePersonalDataRepository.save(secondEmployeePersonalData);
-            employee.setEmployeePersonalDataSet(secondEmployeePersonalData);
+            employee.setEmployeePersonalData(secondEmployeePersonalData);
             employeeRepository.save(employee);
         }
 
@@ -97,7 +97,7 @@ public class EmployeeService {
                     .findByWeightingFactor(Short.valueOf(newEmployeeDto.getEmployeeSecondProfessionalWeightingFactor())));
             secondEmployeeProfessionalData.setEmployee(employee);
             employeeProfessionalDataRepository.save(secondEmployeeProfessionalData);
-            employee.setEmployeeProfessionalDataSet(secondEmployeeProfessionalData);
+            employee.setEmployeeProfessionalData(secondEmployeeProfessionalData);
             employeeRepository.save(employee);
         }
     }
@@ -111,7 +111,7 @@ public class EmployeeService {
                     .findByWeightingFactor(Short.valueOf(newEmployeeDto.getEmployeeThirdPersonalWeightingFactor())));
             thirdEmployeePersonalData.setEmployee(employee);
             employeePersonalDataRepository.save(thirdEmployeePersonalData);
-            employee.setEmployeePersonalDataSet(thirdEmployeePersonalData);
+            employee.setEmployeePersonalData(thirdEmployeePersonalData);
             employeeRepository.save(employee);
         }
 
@@ -123,7 +123,7 @@ public class EmployeeService {
                     .findByWeightingFactor(Short.valueOf(newEmployeeDto.getEmployeeThirdProfessionalWeightingFactor())));
             thirdEmployeeProfessionalData.setEmployee(employee);
             employeeProfessionalDataRepository.save(thirdEmployeeProfessionalData);
-            employee.setEmployeeProfessionalDataSet(thirdEmployeeProfessionalData);
+            employee.setEmployeeProfessionalData(thirdEmployeeProfessionalData);
             employeeRepository.save(employee);
         }
     }
@@ -137,7 +137,7 @@ public class EmployeeService {
                     .findByWeightingFactor(Short.valueOf(newEmployeeDto.getEmployeeFourthPersonalWeightingFactor())));
             fourthEmployeePersonalData.setEmployee(employee);
             employeePersonalDataRepository.save(fourthEmployeePersonalData);
-            employee.setEmployeePersonalDataSet(fourthEmployeePersonalData);
+            employee.setEmployeePersonalData(fourthEmployeePersonalData);
             employeeRepository.save(employee);
         }
 
@@ -149,7 +149,7 @@ public class EmployeeService {
                     .findByWeightingFactor(Short.valueOf(newEmployeeDto.getEmployeeFourthProfessionalWeightingFactor())));
             fourthEmployeeProfessionalData.setEmployee(employee);
             employeeProfessionalDataRepository.save(fourthEmployeeProfessionalData);
-            employee.setEmployeeProfessionalDataSet(fourthEmployeeProfessionalData);
+            employee.setEmployeeProfessionalData(fourthEmployeeProfessionalData);
             employeeRepository.save(employee);
         }
     }
@@ -163,7 +163,7 @@ public class EmployeeService {
                     .findByWeightingFactor(Short.valueOf(newEmployeeDto.getEmployeeFifthPersonalWeightingFactor())));
             fifthEmployeePersonalData.setEmployee(employee);
             employeePersonalDataRepository.save(fifthEmployeePersonalData);
-            employee.setEmployeePersonalDataSet(fifthEmployeePersonalData);
+            employee.setEmployeePersonalData(fifthEmployeePersonalData);
             employeeRepository.save(employee);
         }
 
@@ -175,7 +175,7 @@ public class EmployeeService {
                     .findByWeightingFactor(Short.valueOf(newEmployeeDto.getEmployeeFifthProfessionalWeightingFactor())));
             fifthEmployeeProfessionalData.setEmployee(employee);
             employeeProfessionalDataRepository.save(fifthEmployeeProfessionalData);
-            employee.setEmployeeProfessionalDataSet(fifthEmployeeProfessionalData);
+            employee.setEmployeeProfessionalData(fifthEmployeeProfessionalData);
             employeeRepository.save(employee);
         }
     }
@@ -189,7 +189,7 @@ public class EmployeeService {
                     .findByWeightingFactor(Short.valueOf(newEmployeeDto.getEmployeeSixthPersonalWeightingFactor())));
             sixthEmployeePersonalData.setEmployee(employee);
             employeePersonalDataRepository.save(sixthEmployeePersonalData);
-            employee.setEmployeePersonalDataSet(sixthEmployeePersonalData);
+            employee.setEmployeePersonalData(sixthEmployeePersonalData);
             employeeRepository.save(employee);
         }
 
@@ -201,7 +201,7 @@ public class EmployeeService {
                     .findByWeightingFactor(Short.valueOf(newEmployeeDto.getEmployeeSixthProfessionalWeightingFactor())));
             sixthEmployeeProfessionalData.setEmployee(employee);
             employeeProfessionalDataRepository.save(sixthEmployeeProfessionalData);
-            employee.setEmployeeProfessionalDataSet(sixthEmployeeProfessionalData);
+            employee.setEmployeeProfessionalData(sixthEmployeeProfessionalData);
             employeeRepository.save(employee);
         }
     }
@@ -215,7 +215,7 @@ public class EmployeeService {
                     .findByWeightingFactor(Short.valueOf(newEmployeeDto.getEmployeeSeventhPersonalWeightingFactor())));
             seventhEmployeePersonalData.setEmployee(employee);
             employeePersonalDataRepository.save(seventhEmployeePersonalData);
-            employee.setEmployeePersonalDataSet(seventhEmployeePersonalData);
+            employee.setEmployeePersonalData(seventhEmployeePersonalData);
             employeeRepository.save(employee);
         }
 
@@ -227,7 +227,7 @@ public class EmployeeService {
                     .findByWeightingFactor(Short.valueOf(newEmployeeDto.getEmployeeSeventhProfessionalWeightingFactor())));
             seventhEmployeeProfessionalData.setEmployee(employee);
             employeeProfessionalDataRepository.save(seventhEmployeeProfessionalData);
-            employee.setEmployeeProfessionalDataSet(seventhEmployeeProfessionalData);
+            employee.setEmployeeProfessionalData(seventhEmployeeProfessionalData);
             employeeRepository.save(employee);
         }
     }

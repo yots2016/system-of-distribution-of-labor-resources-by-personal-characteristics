@@ -6,7 +6,8 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@EqualsAndHashCode(exclude = {"project", "projectEmployeeRolePersonalDataSet", "projectEmployeeRoleProfessionalDataSet"})
+@EqualsAndHashCode(exclude = {"project", "projectEmployeeRolePersonalDataSet",
+        "projectEmployeeRoleProfessionalDataSet", "projectEmployeeSet"})
 @Getter
 @Setter
 @RequiredArgsConstructor
@@ -30,18 +31,26 @@ public class ProjectEmployeeRole {
     private Project project;
 
     @Column(nullable = false)
-    @OneToMany(mappedBy = "projectEmployeeRole", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "projectEmployeeRole", cascade = CascadeType.ALL)
     private Set<ProjectEmployeeRolePersonalData> projectEmployeeRolePersonalDataSet = new HashSet<>();
 
     @Column(nullable = false)
-    @OneToMany(mappedBy = "projectEmployeeRole", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "projectEmployeeRole", cascade = CascadeType.ALL)
     private Set<ProjectEmployeeRoleProfessionalData> projectEmployeeRoleProfessionalDataSet = new HashSet<>();
 
-    public void setProjectEmployeeRolePersonalDataSet(ProjectEmployeeRolePersonalData projectEmployeeRolePersonalData) {
+    @Column(nullable = false)
+    @OneToMany(mappedBy = "projectEmployeeRole", cascade = CascadeType.ALL)
+    private Set<Employee> projectEmployeeSet = new HashSet<>();
+
+    public void setEmployee(Employee employee) {
+        this.projectEmployeeSet.add(employee);
+    }
+
+    public void setProjectEmployeeRolePersonalData(ProjectEmployeeRolePersonalData projectEmployeeRolePersonalData) {
         this.projectEmployeeRolePersonalDataSet.add(projectEmployeeRolePersonalData);
     }
 
-    public void setProjectEmployeeRoleProfessionalDataSet(ProjectEmployeeRoleProfessionalData projectEmployeeRoleProfessionalData) {
+    public void setProjectEmployeeRoleProfessionalData(ProjectEmployeeRoleProfessionalData projectEmployeeRoleProfessionalData) {
         this.projectEmployeeRoleProfessionalDataSet.add(projectEmployeeRoleProfessionalData);
     }
 }
