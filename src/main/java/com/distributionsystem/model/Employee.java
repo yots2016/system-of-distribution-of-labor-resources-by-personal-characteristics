@@ -39,11 +39,9 @@ public class Employee {
     @JoinColumn(name = "project_id")
     private Project project;
 
-    @Column(nullable = false)
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
     private Set<EmployeePersonalData> employeePersonalDataSet;
 
-    @Column(nullable = false)
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
     private Set<EmployeeProfessionalData> employeeProfessionalDataSet;
 

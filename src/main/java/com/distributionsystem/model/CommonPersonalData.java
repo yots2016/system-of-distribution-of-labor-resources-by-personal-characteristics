@@ -22,11 +22,9 @@ public class CommonPersonalData {
     @Column(name = "description", nullable = false, length = 4000)
     private String description;
 
-    @Column(nullable = false)
     @OneToMany(mappedBy = "commonPersonalData", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<EmployeePersonalData> employeePersonalDataSet;
 
-    @Column(nullable = false)
     @OneToMany(mappedBy = "commonPersonalData", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<ProjectEmployeeRolePersonalData> projectEmployeeRolePersonalDataSet;
 

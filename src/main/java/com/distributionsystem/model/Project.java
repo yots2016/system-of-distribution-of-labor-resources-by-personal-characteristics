@@ -46,11 +46,9 @@ public class Project {
         this.employeesSet.add(employee);
     }
 
-    @Column(nullable = false)
     @OneToMany(mappedBy = "project")
     private Set<Employee> employeesSet;
 
-    @Column(nullable = false)
     @OneToMany(mappedBy = "project")
     private Set<ProjectEmployeeRole> projectEmployeeRoleSet = new HashSet<>();
 
