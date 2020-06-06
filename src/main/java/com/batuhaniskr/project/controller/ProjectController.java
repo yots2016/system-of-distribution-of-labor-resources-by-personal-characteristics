@@ -5,6 +5,7 @@ import com.batuhaniskr.project.model.Category;
 import com.batuhaniskr.project.model.Project;
 import com.batuhaniskr.project.service.*;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,20 +15,14 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+@Slf4j
 @RequestMapping({"/projects", "/"})
 @RequiredArgsConstructor
 @Controller
-public class MainController {
-
-    private static final Logger LOG = Logger.getLogger(MainController.class.getName());
-
-    private static int currentPage = 1;
-    private static int pageSize = 5;
+public class ProjectController {
 
     private final ProjectService projectService;
     private final CategoryService categoryService;
@@ -35,12 +30,11 @@ public class MainController {
     private final CommonProfessionalDataService commonProfessionalDataService;
     private final WeightingFactorService weightingFactorService;
 
-
-    @RequestMapping("")
+    @GetMapping
     public String index(Model model, @RequestParam("page") Optional<Integer> page,
                         @RequestParam("size") Optional<Integer> size) {
-        page.ifPresent(p -> currentPage = p);
-        size.ifPresent(s -> pageSize = s);
+        int currentPage = page.orElse(1);
+        int pageSize = size.orElse(5);
 
         Pageable pageable = new PageRequest(currentPage - 1, pageSize);
         Page<Project> projectPage = projectService.getAllProjects(pageable);
@@ -59,7 +53,7 @@ public class MainController {
     }
 
 
-    @RequestMapping(value = "/add")
+    @GetMapping("/add")
     public String addProject(@Valid Model model) {
         List<Category> categoryList = categoryService.getAllCategory();
         model.addAttribute("newProjectDto", new NewProjectDto());
@@ -68,44 +62,36 @@ public class MainController {
         model.addAttribute("commonProfessionalDataList", commonProfessionalDataService.getAllCommonProfessionalData());
         model.addAttribute("weightingFactorList", weightingFactorService.getAllWeightingFactor());
 
-        return "addproject";
+        return "add-project";
     }
 
-//    @RequestMapping(value = "/save", method = RequestMethod.POST)
-//    public String save(Project project) {
-//        LOG.log(Level.INFO, "/ " + project.getName());
-//        projectService.saveProject(project);
-//
-//        return "redirect:/projects";
-//    }
-
-    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    @PostMapping("/save")
     public String save(NewProjectDto newProjectDto) {
-        LOG.log(Level.INFO, "/ " + newProjectDto.getName());
+        log.info("/ {}", newProjectDto.getName());
 
         projectService.saveProject(newProjectDto);
 
         return "redirect:/projects";
     }
 
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    @GetMapping("/delete/{id}")
     public String deleteProject(@PathVariable("id") Long id) {
         projectService.deleteProject(id);
 
         return "redirect:/projects";
     }
 
-    @RequestMapping(value = "/edit/{id}")
+    @GetMapping("/edit/{id}")
     public String editProject(@PathVariable("id") Long id, Model model) {
         Project project = projectService.getProjectById(id);
         List<Category> categoryList = categoryService.getAllCategory();
         model.addAttribute("project", project);
         model.addAttribute("categoryList", categoryList);
 
-        return "editproject";
+        return "edit-project";
     }
 
-    @RequestMapping(value = "/view/{id}")
+    @GetMapping("/view/{id}")
     public String viewProject(@PathVariable("id") Long id, Model model) {
         Project project = projectService.getProjectById(id);
 
