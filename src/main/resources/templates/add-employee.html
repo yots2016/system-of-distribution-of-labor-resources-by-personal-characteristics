@@ -10,6 +10,7 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             <h3>New Employee</h3>
+            <h6>If the weighting factors of the employee are not specified, then all weighting factor will be "HIGHEST".</h6>
         </div>
         <div class="panel-body">
             <!--            TODO 31.05.2020 Add using NewEmployeeDto-->
@@ -42,7 +43,7 @@
                         <div class="form-inline">
                             <select class="form-control" th:field="*{employeeFirstPersonalCharacteristic}"
                                     style="width: 290px" required>
-                                <option value="">Select first personal characteristic</option>
+                                <option value="">Select personal characteristic</option>
                                 <option th:each="commonPersonalData : ${commonPersonalDataList}"
                                         th:value="${commonPersonalData.description}"
                                         th:text="${commonPersonalData.description}">
@@ -61,7 +62,7 @@
                         <div class="form-inline">
                             <select class="form-control" th:field="*{employeeSecondPersonalCharacteristic}"
                                     style="width: 290px">
-                                <option value="">Select second personal characteristic</option>
+                                <option value="">Select personal characteristic</option>
                                 <option th:each="commonPersonalData : ${commonPersonalDataList}"
                                         th:value="${commonPersonalData.description}"
                                         th:text="${commonPersonalData.description}">
@@ -80,7 +81,7 @@
                         <div class="form-inline">
                             <select class="form-control" th:field="*{employeeThirdPersonalCharacteristic}"
                                     style="width: 290px">
-                                <option value="">Select second personal characteristic</option>
+                                <option value="">Select personal characteristic</option>
                                 <option th:each="commonPersonalData : ${commonPersonalDataList}"
                                         th:value="${commonPersonalData.description}"
                                         th:text="${commonPersonalData.description}">
@@ -99,7 +100,7 @@
                         <div class="form-inline">
                             <select class="form-control" th:field="*{employeeFourthPersonalCharacteristic}"
                                     style="width: 290px">
-                                <option value="">Select second personal characteristic</option>
+                                <option value="">Select personal characteristic</option>
                                 <option th:each="commonPersonalData : ${commonPersonalDataList}"
                                         th:value="${commonPersonalData.description}"
                                         th:text="${commonPersonalData.description}">
@@ -118,7 +119,7 @@
                         <div class="form-inline">
                             <select class="form-control" th:field="*{employeeFifthPersonalCharacteristic}"
                                     style="width: 290px">
-                                <option value="">Select second personal characteristic</option>
+                                <option value="">Select personal characteristic</option>
                                 <option th:each="commonPersonalData : ${commonPersonalDataList}"
                                         th:value="${commonPersonalData.description}"
                                         th:text="${commonPersonalData.description}">
@@ -137,7 +138,7 @@
                         <div class="form-inline">
                             <select class="form-control" th:field="*{employeeSixthPersonalCharacteristic}"
                                     style="width: 290px">
-                                <option value="">Select second personal characteristic</option>
+                                <option value="">Select personal characteristic</option>
                                 <option th:each="commonPersonalData : ${commonPersonalDataList}"
                                         th:value="${commonPersonalData.description}"
                                         th:text="${commonPersonalData.description}">
@@ -156,7 +157,7 @@
                         <div class="form-inline">
                             <select class="form-control" th:field="*{employeeSeventhPersonalCharacteristic}"
                                     style="width: 290px">
-                                <option value="">Select second personal characteristic</option>
+                                <option value="">Select personal characteristic</option>
                                 <option th:each="commonPersonalData : ${commonPersonalDataList}"
                                         th:value="${commonPersonalData.description}"
                                         th:text="${commonPersonalData.description}">
@@ -180,7 +181,7 @@
                         <div class="form-inline">
                             <select class="form-control" th:field="*{employeeFirstProfessionalCharacteristic}"
                                     style="width: 290px" required>
-                                <option value="">Select first professional characteristic</option>
+                                <option value="">Select professional characteristic</option>
                                 <option th:each="commonPersonalData : ${commonProfessionalDataList}"
                                         th:value="${commonPersonalData.description}"
                                         th:text="${commonPersonalData.description}">
@@ -199,7 +200,7 @@
                         <div class="form-inline">
                             <select class="form-control" th:field="*{employeeSecondProfessionalCharacteristic}"
                                     style="width: 290px">
-                                <option value="">Select second professional characteristic</option>
+                                <option value="">Select professional characteristic</option>
                                 <option th:each="commonPersonalData : ${commonProfessionalDataList}"
                                         th:value="${commonPersonalData.description}"
                                         th:text="${commonPersonalData.description}">
@@ -218,7 +219,7 @@
                         <div class="form-inline">
                             <select class="form-control" th:field="*{employeeThirdProfessionalCharacteristic}"
                                     style="width: 290px">
-                                <option value="">Select second professional characteristic</option>
+                                <option value="">Select professional characteristic</option>
                                 <option th:each="commonPersonalData : ${commonProfessionalDataList}"
                                         th:value="${commonPersonalData.description}"
                                         th:text="${commonPersonalData.description}">
@@ -237,7 +238,7 @@
                         <div class="form-inline">
                             <select class="form-control" th:field="*{employeeFourthProfessionalCharacteristic}"
                                     style="width: 290px">
-                                <option value="">Select second professional characteristic</option>
+                                <option value="">Select professional characteristic</option>
                                 <option th:each="commonPersonalData : ${commonProfessionalDataList}"
                                         th:value="${commonPersonalData.description}"
                                         th:text="${commonPersonalData.description}">
@@ -256,7 +257,7 @@
                         <div class="form-inline">
                             <select class="form-control" th:field="*{employeeFifthProfessionalCharacteristic}"
                                     style="width: 290px">
-                                <option value="">Select second professional characteristic</option>
+                                <option value="">Select professional characteristic</option>
                                 <option th:each="commonPersonalData : ${commonProfessionalDataList}"
                                         th:value="${commonPersonalData.description}"
                                         th:text="${commonPersonalData.description}">
@@ -275,7 +276,7 @@
                         <div class="form-inline">
                             <select class="form-control" th:field="*{employeeSixthProfessionalCharacteristic}"
                                     style="width: 290px">
-                                <option value="">Select second professional characteristic</option>
+                                <option value="">Select professional characteristic</option>
                                 <option th:each="commonPersonalData : ${commonProfessionalDataList}"
                                         th:value="${commonPersonalData.description}"
                                         th:text="${commonPersonalData.description}">
@@ -294,7 +295,7 @@
                         <div class="form-inline">
                             <select class="form-control" th:field="*{employeeSeventhProfessionalCharacteristic}"
                                     style="width: 290px">
-                                <option value="">Select second professional characteristic</option>
+                                <option value="">Select professional characteristic</option>
                                 <option th:each="commonPersonalData : ${commonProfessionalDataList}"
                                         th:value="${commonPersonalData.description}"
                                         th:text="${commonPersonalData.description}">
