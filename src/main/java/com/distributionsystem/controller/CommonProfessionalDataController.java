@@ -6,44 +6,40 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-@RequestMapping("/common-prof-data")
+@RequestMapping("/common-professional-data")
 @RequiredArgsConstructor
 @Controller
 public class CommonProfessionalDataController {
 
     private final CommonProfessionalDataService commonProfessionalDataService;
 
-    private int currentPage = 1;
-    private int pagesSize = 10;
-
-    @RequestMapping("")
+    @GetMapping
     public String showCommonProfessionalDataService(Model model, @RequestParam("page") Optional<Integer> pageNumber,
-                                                @RequestParam("page") Optional<Integer> size) {
-        //TODO 30.05.2020 Refactor with Optional::orElse()
-        pageNumber.ifPresent(number -> currentPage = number);
-        size.ifPresent(sizeNumber -> pagesSize = sizeNumber);
+                                                    @RequestParam("size") Optional<Integer> size) {
+        int currentPage = pageNumber.orElse(1);
+        int pagesSize = size.orElse(5);
 
         Pageable pageable = PageRequest.of(currentPage - 1, pagesSize);
-        Page<CommonProfessionalData> cPDPage = commonProfessionalDataService.getAllEmployees(pageable);
+        Page<CommonProfessionalData> commonProfessionalDataPage = commonProfessionalDataService
+                .getAllCommonProfessionalData(pageable);
 
-        model.addAttribute("CPDPage", cPDPage);
+        model.addAttribute("commonProfessionalDataPage", commonProfessionalDataPage);
 
-        int totalPages = cPDPage.getTotalPages();
+        int totalPages = commonProfessionalDataPage.getTotalPages();
         if (totalPages > 0) {
-            List<Integer> pagesNumbers = IntStream.rangeClosed(0, totalPages)
+            List<Integer> pagesNumbers = IntStream.rangeClosed(1, totalPages)
                     .boxed()
                     .collect(Collectors.toList());
             model.addAttribute("pagesNumbers", pagesNumbers);
         }
 
-        return "common-prof-data";
+        return "common-professional-data";
     }
 }
