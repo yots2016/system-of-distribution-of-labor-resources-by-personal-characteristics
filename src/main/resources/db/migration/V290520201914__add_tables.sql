@@ -91,13 +91,11 @@ CREATE TABLE employee
     FOREIGN KEY (project_id)
         REFERENCES project (id) MATCH SIMPLE
         ON UPDATE NO ACTION
-        ON DELETE SET DEFAULT
-        NOT VALID,
+        ON DELETE SET DEFAULT,
     FOREIGN KEY (project_employee_role_id)
         REFERENCES project_employee_role (id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE SET DEFAULT
-        NOT VALID
 );
 
 CREATE TABLE employee_personal_data
