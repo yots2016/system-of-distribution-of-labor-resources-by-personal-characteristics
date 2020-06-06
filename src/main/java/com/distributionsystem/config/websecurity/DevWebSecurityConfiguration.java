@@ -53,7 +53,8 @@ public class DevWebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "h2-console")
                 .permitAll()
                 .antMatchers("/projects/delete/**",
-                        "/common-personal-data/delete/**")
+                        "/common-personal-data/delete/**",
+                        "/common-professional-data/delete/**")
                 .hasAuthority("ROLE_ADMIN")
                 .anyRequest().authenticated()
                 .and()
