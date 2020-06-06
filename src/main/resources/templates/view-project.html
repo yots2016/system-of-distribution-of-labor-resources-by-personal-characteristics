@@ -65,7 +65,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="employee : ${employeesPage}" id="projects" class="success">
+                <tr th:each="employee : ${project.employeesSet}" id="projects" class="success">
                     <td th:text="${employee.firstName}"></td>
                     <td th:text="${employee.lastName}"></td>
                     <td th:text="${employee.email}"></td>
@@ -73,9 +73,7 @@
                     <td th:text="${employee.project?.name}"></td>
                     <td th:text="${employee.getProjectEmployeeRole().employeeRole}"></td>
                     <td>
-                        <!--TODO 30.05.2020 Implement-->
-<!--                        <a th:href="@{employees/delete/{id}(id=${project.id})}" class="btn btn-danger">Delete</a>-->
-                        <a th:href="@{employees/delete/{id}(id=${employee.id})}" class="btn btn-danger">Delete</a>
+                        <a th:href="@{delete/employee(project-id=${project.id}, employee-id=${employee.id})}" class="btn btn-danger">Delete</a>
                         <!--TODO 30.05.2020 Implement-->
 <!--                        <a th:href="@{employees/edit/{id}(id=${project.id})}" class="btn btn-primary">Edit</a>-->
                         <a th:href="@{employees/change/{id}(id=${employee.id})}" class="btn btn-primary">Change</a>
@@ -83,33 +81,6 @@
                 </tr>
                 </tbody>
             </table>
-
-<!--            <nav aria-label="Page navigation example">-->
-<!--                <ul class="pagination">-->
-<!--                    <li th:class="${employeesPage.number eq 0} ? 'hidden' : 'page-item'">-->
-<!--                        <a th:href="@{/employees(size=${employeesPage.size}, page=${employeesPage.number})}"-->
-<!--                           class="page-link" href="#" aria-label="Previous" id="previous">-->
-<!--                            <span aria-hidden="true">&laquo;</span>-->
-<!--                            <span class="sr-only">Previous</span>-->
-<!--                        </a>-->
-<!--                    </li>-->
-<!--                    <li class="page-item" th:each="pageNumber : ${pagesNumbers}">-->
-<!--                        <a th:href="@{/employees(size=${employeesPage.size}, page=${pageNumber})}"-->
-<!--                           th:text=${pageNumber}-->
-<!--                           th:class="${pageNumber==employeesPage.number + 1} ? active"></a>-->
-<!--                    </li>-->
-<!--                    <li th:class="${employeesPage.number + 1 == employeesPage.totalPages} ? 'hidden' : 'page-item'">-->
-<!--                        <a class="page-link"-->
-<!--                           th:href="@{/employees(size=${employeesPage.size}, page=${employeesPage.number + 2})}"-->
-<!--                           aria-label="Next" id="next">-->
-<!--                            <span aria-hidden="true">&raquo;</span>-->
-<!--                            <span class="sr-only">Next</span>-->
-<!--                        </a>-->
-<!--                    </li>-->
-<!--                </ul>-->
-<!--            </nav>-->
-
-<!--            <a href="/employees/add" class="btn btn-success">Add Employee</a>-->
         </div>
     </div>
 </div>

@@ -39,15 +39,12 @@ public class Project {
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
+    @OneToMany(mappedBy = "project")
+    private Set<Employee> employeesSet = new HashSet<>();
+
     public void addEmployee (Employee employee) {
-        if (employeesSet == null) {
-            employeesSet = new HashSet<>();
-        }
         this.employeesSet.add(employee);
     }
-
-    @OneToMany(mappedBy = "project")
-    private Set<Employee> employeesSet;
 
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
     private Set<ProjectEmployeeRole> projectEmployeeRoleSet = new HashSet<>();

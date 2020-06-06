@@ -10,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -47,6 +48,16 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public void deleteEmployee(Long id) {
         employeeRepository.deleteById(id);
+    }
+
+    @Override
+    public Optional<Employee> getEmployeeById(Long employeeId) {
+        return employeeRepository.findById(employeeId);
+    }
+
+    @Override
+    public void saveEmployee(Employee employee) {
+        employeeRepository.save(employee);
     }
 
     private void saveAllEmployeeCharacteristics(NewEmployeeDto newEmployeeDto, Employee employee) {

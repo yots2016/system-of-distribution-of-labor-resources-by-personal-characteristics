@@ -1,8 +1,7 @@
 package com.distributionsystem.controller;
 
 import com.distributionsystem.dto.NewProjectDto;
-import com.distributionsystem.model.Category;
-import com.distributionsystem.model.Project;
+import com.distributionsystem.model.*;
 import com.distributionsystem.service.*;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -26,6 +25,7 @@ public class ProjectController {
 
     private final ProjectService projectService;
     private final CategoryService categoryService;
+    private final EmployeeService employeeService;
     private final CommonPersonalDataService commonPersonalDataService;
     private final CommonProfessionalDataService commonProfessionalDataService;
     private final WeightingFactorService weightingFactorService;
@@ -81,6 +81,17 @@ public class ProjectController {
         return "redirect:/projects";
     }
 
+    @GetMapping("view/delete/employee")
+    public String deleteEmployeeFromProject(@RequestParam("project-id") Long projectId,
+                                            @RequestParam("employee-id") Long employeeId) {
+        Employee employee = employeeService.getEmployeeById(employeeId).orElseThrow(() ->
+                new RuntimeException("The employee was not found."));
+        employee.setProject(null);
+        employeeService.saveEmployee(employee);
+
+        return String.format("redirect:/view/%s", projectId);
+    }
+
     @GetMapping("/edit/{id}")
     public String editProject(@PathVariable("id") Long id, Model model) {
         Project project = projectService.getProjectById(id)
@@ -97,7 +108,7 @@ public class ProjectController {
         Project project = projectService.getProjectById(id)
                 .orElseThrow(() -> new RuntimeException("The project was not found."));
 
-        model.addAttribute("employeesPage", project.getEmployeesSet());
+        model.addAttribute("project", project);
 
         return "view-project";
     }
