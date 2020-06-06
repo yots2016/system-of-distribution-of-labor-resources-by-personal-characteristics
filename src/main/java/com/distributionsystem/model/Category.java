@@ -22,7 +22,7 @@ public class Category {
     @Column(nullable = false, name = "category_name")
     private String categoryName;
 
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "category")
     private Set<Project> projectSet;
 
     public void addProject(Project project) {

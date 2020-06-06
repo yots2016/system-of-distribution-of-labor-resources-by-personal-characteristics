@@ -49,7 +49,7 @@ public class Project {
     @OneToMany(mappedBy = "project")
     private Set<Employee> employeesSet;
 
-    @OneToMany(mappedBy = "project")
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
     private Set<ProjectEmployeeRole> projectEmployeeRoleSet = new HashSet<>();
 
     public void addProjectEmployeeRole(ProjectEmployeeRole projectEmployeeRole) {
