@@ -36,7 +36,7 @@ public class ProjectEmployeeRole {
     @OneToMany(mappedBy = "projectEmployeeRole", cascade = CascadeType.ALL)
     private Set<ProjectEmployeeRoleProfessionalData> projectEmployeeRoleProfessionalDataSet = new HashSet<>();
 
-    @OneToMany(mappedBy = "projectEmployeeRole", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "projectEmployeeRole")
     private Set<Employee> projectEmployeeSet = new HashSet<>();
 
     public void setEmployee(Employee employee) {
