@@ -61,7 +61,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="data : ${CPDPage.content}" id="projects" class="success">
+                <tr th:each="data : ${weightingFactorPage.content}" id="projects" class="success">
                     <td th:text="${data.name}"></td>
                     <td th:text="${data.weightingFactor}"></td>
                     <td>
@@ -78,21 +78,21 @@
 
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
-                    <li th:class="${CPDPage.number eq 0} ? 'hidden' : 'page-item'">
-                        <a th:href="@{/employees(size=${CPDPage.size}, page=${CPDPage.number})}"
+                    <li th:class="${weightingFactorPage.number eq 0} ? 'hidden' : 'page-item'">
+                        <a th:href="@{/weighting-factor(size=${weightingFactorPage.size}, page=${weightingFactorPage.number})}"
                            class="page-link" href="#" aria-label="Previous" id="previous">
                             <span aria-hidden="true">&laquo;</span>
                             <span class="sr-only">Previous</span>
                         </a>
                     </li>
                     <li class="page-item" th:each="pageNumber : ${pagesNumbers}">
-                        <a th:href="@{/employees(size=${CPDPage.size}, page=${pageNumber})}"
+                        <a th:href="@{/weighting-factor(size=${weightingFactorPage.size}, page=${pageNumber})}"
                            th:text=${pageNumber}
-                           th:class="${pageNumber==CPDPage.number + 1} ? active"></a>
+                           th:class="${pageNumber==weightingFactorPage.number + 1} ? active"></a>
                     </li>
-                    <li th:class="${CPDPage.number + 1 == CPDPage.totalPages} ? 'hidden' : 'page-item'">
+                    <li th:class="${weightingFactorPage.number + 1 == weightingFactorPage.totalPages} ? 'hidden' : 'page-item'">
                         <a class="page-link"
-                           th:href="@{/employees(size=${CPDPage.size}, page=${CPDPage.number + 2})}"
+                           th:href="@{/weighting-factor(size=${weightingFactorPage.size}, page=${weightingFactorPage.number + 2})}"
                            aria-label="Next" id="next">
                             <span aria-hidden="true">&raquo;</span>
                             <span class="sr-only">Next</span>
