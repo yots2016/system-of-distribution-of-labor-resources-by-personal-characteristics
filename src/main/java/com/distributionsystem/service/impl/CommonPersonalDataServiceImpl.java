@@ -8,6 +8,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Service
 public class CommonPersonalDataServiceImpl implements CommonPersonalDataService {
@@ -16,5 +18,10 @@ public class CommonPersonalDataServiceImpl implements CommonPersonalDataService 
 
     public Page<CommonPersonalData> getAllCommonPersonalData(Pageable pageable) {
         return commonPersonalDataRepository.findAll(pageable);
+    }
+
+    @Override
+    public List<CommonPersonalData> getAllCommonPersonalData() {
+        return commonPersonalDataRepository.findAll();
     }
 }
