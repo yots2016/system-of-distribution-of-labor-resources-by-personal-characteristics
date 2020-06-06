@@ -61,25 +61,33 @@ public class RecruitmentServiceImpl implements RecruitmentService {
         Map<String, Short> personalCharacteristics = employee.getEmployeePersonalDataSet().stream()
                 .map(employeePersonalData -> Pair.of(employeePersonalData.getCommonPersonalData().getDescription(),
                         employeePersonalData.getWeightingFactor().getWeightingFactor()))
-                .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond, this::mergeEmployees));
+                .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond, this::mergeEmployeesCharacteristics));
         Map<String, Short> professionalCharacteristics = employee.getEmployeeProfessionalDataSet().stream()
-                .map(employeeProfessionalData -> Pair.of(employeeProfessionalData.getCommonProfessionalData().getDescription(),
+                .map(employeeProfessionalData -> Pair.of(
+                        employeeProfessionalData.getCommonProfessionalData().getDescription(),
                         employeeProfessionalData.getWeightingFactor().getWeightingFactor()))
-                .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond, this::mergeEmployees));
+                .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond, this::mergeEmployeesCharacteristics));
         return Stream.concat(professionalCharacteristics.entrySet().stream(),
                 personalCharacteristics.entrySet().stream())
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 
     private Map<String, Short> extractAllRoleCharacteristics(ProjectEmployeeRole projectEmployeeRole) {
-        Map<String, Short> rolePersonalCharacteristics = projectEmployeeRole.getProjectEmployeeRolePersonalDataSet().stream()
-                .map(projectEmployeeRolePersonalData -> Pair.of(projectEmployeeRolePersonalData.getCommonPersonalData().getDescription(),
+        Map<String, Short> rolePersonalCharacteristics = projectEmployeeRole.getProjectEmployeeRolePersonalDataSet()
+                .stream()
+                .map(projectEmployeeRolePersonalData -> Pair.of(
+                        projectEmployeeRolePersonalData.getCommonPersonalData().getDescription(),
                         projectEmployeeRolePersonalData.getWeightingFactor().getWeightingFactor()))
-                .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond, this::mergeProjectEmployeeRoles));
-        Map<String, Short> roleProfessionalCharacteristics = projectEmployeeRole.getProjectEmployeeRoleProfessionalDataSet().stream()
-                .map(data -> Pair.of(data.getCommonProfessionalData().getDescription(), data.getWeightingFactor().getWeightingFactor()))
-                .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond, this::mergeProjectEmployeeRoles));
-        return Stream.concat(rolePersonalCharacteristics.entrySet().stream(), roleProfessionalCharacteristics.entrySet().stream())
+                .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond,
+                        this::mergeProjectEmployeeRolesCharacteristics));
+        Map<String, Short> roleProfessionalCharacteristics =
+                projectEmployeeRole.getProjectEmployeeRoleProfessionalDataSet().stream()
+                        .map(data -> Pair.of(data.getCommonProfessionalData().getDescription(),
+                                data.getWeightingFactor().getWeightingFactor()))
+                        .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond,
+                                this::mergeProjectEmployeeRolesCharacteristics));
+        return Stream.concat(rolePersonalCharacteristics.entrySet().stream(), roleProfessionalCharacteristics.entrySet()
+                .stream())
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 
@@ -96,11 +104,11 @@ public class RecruitmentServiceImpl implements RecruitmentService {
                 });
     }
 
-    private Short mergeEmployees(Short short1, Short short2) {
+    private Short mergeEmployeesCharacteristics(Short short1, Short short2) {
         return short1 > short2 ? short1 : short2;
     }
 
-    private Short mergeProjectEmployeeRoles(Short short1, Short short2) {
+    private Short mergeProjectEmployeeRolesCharacteristics(Short short1, Short short2) {
         return short1 > short2 ? short2 : short1;
     }
 }
