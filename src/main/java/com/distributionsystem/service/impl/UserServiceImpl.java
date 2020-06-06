@@ -1,9 +1,10 @@
-package com.distributionsystem.service;
+package com.distributionsystem.service.impl;
 
 import com.distributionsystem.dto.UserRegistrationDto;
 import com.distributionsystem.model.Role;
 import com.distributionsystem.model.User;
 import com.distributionsystem.repository.UserRepository;
+import com.distributionsystem.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
