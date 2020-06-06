@@ -52,6 +52,11 @@ public class ProjectServiceImpl implements ProjectService {
         projectRepository.deleteById(id);
     }
 
+    @Override
+    public void saveProject(Project project) {
+        projectRepository.save(project);
+    }
+
     private Project constructProject(NewProjectDto newProjectDto) {
         Project project = new Project();
         project.setName(newProjectDto.getName());
