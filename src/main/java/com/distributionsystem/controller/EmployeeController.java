@@ -25,7 +25,7 @@ public class EmployeeController {
     private final CommonProfessionalDataService commonProfessionalDataService;
     private final WeightingFactorService weightingFactorService;
 
-    @RequestMapping("")
+    @GetMapping
     public String showEmployees(Model model, @RequestParam("page") Optional<Integer> pageNumber,
                                 @RequestParam("size") Optional<Integer> size) {
         int currentPage = pageNumber.orElse(1);
@@ -47,7 +47,7 @@ public class EmployeeController {
         return "employees";
     }
 
-    @RequestMapping(value = "/add")
+    @GetMapping("/add")
     public String addProject(@Valid Model model) {
         model.addAttribute("newEmployeeDto", new NewEmployeeDto());
         model.addAttribute("commonPersonalDataList", commonPersonalDataService.getAllCommonPersonalData());
@@ -57,15 +57,14 @@ public class EmployeeController {
         return "add-employee";
     }
 
-    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    @PostMapping("/save")
     public String save(NewEmployeeDto newEmployeeDto) {
         employeeService.saveEmployee(newEmployeeDto);
 
-        List<Employee> allEmployees = employeeService.getAllEmployees();
         return "redirect:/employees";
     }
 
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    @GetMapping("/delete/{id}")
     public String deleteProject(@PathVariable("id") Long id) {
         employeeService.deleteEmployee(id);
 
