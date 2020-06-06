@@ -32,7 +32,8 @@ VALUES ('honesty'),
        ('justice');
 
 INSERT INTO common_professional_data (description)
-VALUES ('experience as a project manager for more than a year'),
+VALUES ('ability to work in a team'),
+       ('experience as a project manager for more than a year'),
        ('experience as a business analyst for more than a year'),
        ('experience as a systems analyst for more than a year'),
        ('more than a year of experience in front-end development'),
@@ -46,7 +47,6 @@ VALUES ('experience as a project manager for more than a year'),
        ('erudition'),
        ('ability to teach others'),
        ('openness to everything new, the ability to look for new forms and methods of work'),
-       ('ability to work in a team'),
        ('ability to support and ignite people with a new idea'),
        ('ability to create a working team with a favorable psychological atmosphere for work'),
        ('ability to manage people, the desire to lead people, to jointly achieve goals'),
