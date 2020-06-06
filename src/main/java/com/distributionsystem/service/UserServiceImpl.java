@@ -21,9 +21,9 @@ public class UserServiceImpl implements UserService {
 
     private static final String ROLE_USER = "ROLE_USER";
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
-    private BCryptPasswordEncoder passwordEncoder;
+    private final BCryptPasswordEncoder passwordEncoder;
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
