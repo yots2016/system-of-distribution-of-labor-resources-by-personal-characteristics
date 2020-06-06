@@ -16,6 +16,7 @@ public class CommonPersonalDataServiceImpl implements CommonPersonalDataService 
 
     private final CommonPersonalDataRepository commonPersonalDataRepository;
 
+    @Override
     public Page<CommonPersonalData> getAllCommonPersonalData(Pageable pageable) {
         return commonPersonalDataRepository.findAll(pageable);
     }
