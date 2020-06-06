@@ -23,11 +23,9 @@ public class CommonProfessionalData {
     @Column(name = "description", nullable = false, length = 4000)
     private String description;
 
-    @Column(nullable = false)
     @OneToMany(mappedBy = "commonProfessionalData", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<EmployeeProfessionalData> employeeProfessionalDataSet;
 
-    @Column(nullable = false)
     @OneToMany(mappedBy = "commonProfessionalData", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<ProjectEmployeeRoleProfessionalData> projectEmployeeRoleProfessionalDataSet;
 

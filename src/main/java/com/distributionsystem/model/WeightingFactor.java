@@ -26,19 +26,15 @@ public class WeightingFactor {
     @Column(name = "weighting_factor", nullable = false)
     private Short weightingFactor;
 
-    @Column(nullable = false)
     @OneToMany(mappedBy = "weightingFactor", cascade = CascadeType.ALL)
     private Set<EmployeePersonalData> employeePersonalDataSet;
 
-    @Column(nullable = false)
     @OneToMany(mappedBy = "weightingFactor", cascade = CascadeType.ALL)
     private Set<EmployeeProfessionalData> employeeProfessionalDataSet;
 
-    @Column(nullable = false)
     @OneToMany(mappedBy = "weightingFactor", cascade = CascadeType.ALL)
     private Set<ProjectEmployeeRolePersonalData> projectEmployeeRolePersonalDataSet;
 
-    @Column(nullable = false)
     @OneToMany(mappedBy = "weightingFactor", cascade = CascadeType.ALL)
     private Set<ProjectEmployeeRoleProfessionalData> projectEmployeeRoleProfessionalDataSet;
 

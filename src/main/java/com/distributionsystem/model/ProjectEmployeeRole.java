@@ -30,15 +30,12 @@ public class ProjectEmployeeRole {
     @JoinColumn(name = "project_id", nullable = false)
     private Project project;
 
-    @Column(nullable = false)
     @OneToMany(mappedBy = "projectEmployeeRole", cascade = CascadeType.ALL)
     private Set<ProjectEmployeeRolePersonalData> projectEmployeeRolePersonalDataSet = new HashSet<>();
 
-    @Column(nullable = false)
     @OneToMany(mappedBy = "projectEmployeeRole", cascade = CascadeType.ALL)
     private Set<ProjectEmployeeRoleProfessionalData> projectEmployeeRoleProfessionalDataSet = new HashSet<>();
 
-    @Column(nullable = false)
     @OneToMany(mappedBy = "projectEmployeeRole", cascade = CascadeType.ALL)
     private Set<Employee> projectEmployeeSet = new HashSet<>();
 
