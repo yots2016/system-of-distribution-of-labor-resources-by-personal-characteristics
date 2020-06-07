@@ -18,7 +18,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @RequestMapping("/access-denied")
+    @GetMapping("/access-denied")
     public String accessDenied() {
         return "error/access-denied";
     }
@@ -28,17 +28,17 @@ public class UserController {
         return new UserRegistrationDto();
     }
 
-    @GetMapping(value = "/login")
+    @GetMapping("/login")
     public String showRegistrationForm(Model model) {
         return "login";
     }
 
-    @RequestMapping(value = "/registration", method = RequestMethod.POST)
+    @PostMapping("/registration")
     public String registerUserAccount(@ModelAttribute("user") @Valid UserRegistrationDto userDto,
                                       BindingResult result, Model model) {
         User existing = userService.findByEmail(userDto.getEmail());
         if (existing != null) {
-            result.rejectValue("email", null, "There is already an account registered with that email");
+            result.rejectValue("email", "", "There is already an account registered with that email");
         }
 
         if (result.hasErrors()) {
