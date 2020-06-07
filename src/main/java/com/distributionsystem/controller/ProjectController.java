@@ -23,6 +23,9 @@ import java.util.stream.IntStream;
 @Controller
 public class ProjectController {
 
+    private static final String THE_PROJECT_WAS_NOT_FOUND = "The project was not found.";
+    private static final String THE_EMPLOYEE_WAS_NOT_FOUND = "The employee was not found.";
+
     private final ProjectService projectService;
     private final CategoryService categoryService;
     private final EmployeeService employeeService;
@@ -84,18 +87,67 @@ public class ProjectController {
     @GetMapping("view/delete/employee")
     public String deleteEmployeeFromProject(@RequestParam("project-id") Long projectId,
                                             @RequestParam("employee-id") Long employeeId) {
-        Employee employee = employeeService.getEmployeeById(employeeId).orElseThrow(() ->
-                new RuntimeException("The employee was not found."));
+        Employee employee = employeeService.getEmployeeById(employeeId)
+                .orElseThrow(() -> new RuntimeException(THE_EMPLOYEE_WAS_NOT_FOUND));
         employee.setProject(null);
         employeeService.saveEmployee(employee);
 
         return String.format("redirect:/view/%s", projectId);
     }
 
+    @GetMapping("view/change/select/employee")
+    public String selectEmployeeInProject(@RequestParam("project-id") Long projectId,
+                                          @RequestParam("employee-id") Long employeeId,
+                                          @RequestParam("new-employee-id") Long newEmployeeId) {
+        Project project = projectService.getProjectById(projectId)
+                .orElseThrow(() -> new RuntimeException(THE_PROJECT_WAS_NOT_FOUND));
+        Employee employee = employeeService.getEmployeeById(employeeId)
+                .orElseThrow(() -> new RuntimeException(THE_EMPLOYEE_WAS_NOT_FOUND));
+        ProjectEmployeeRole projectEmployeeRole = employee.getProjectEmployeeRole();
+        employee.setProjectEmployeeRole(null);
+        employee.setProject(null);
+        employeeService.saveEmployee(employee);
+        Employee newEmployee = employeeService.getEmployeeById(newEmployeeId)
+                .orElseThrow(() -> new RuntimeException(THE_EMPLOYEE_WAS_NOT_FOUND));
+        newEmployee.setProject(project);
+        newEmployee.setProjectEmployeeRole(projectEmployeeRole);
+        employeeService.saveEmployee(newEmployee);
+
+        return String.format("redirect:/view/%s", projectId);
+    }
+
+    @GetMapping("view/change/employee")
+    public String changeEmployeeInProject(@RequestParam("page") Optional<Integer> pageNumber,
+                                          @RequestParam("size") Optional<Integer> size,
+                                          @RequestParam("project-id") Long projectId,
+                                          @RequestParam("employee-id") Long employeeId,
+                                          Model model) {
+        int currentPage = pageNumber.orElse(1);
+        int pagesSize = size.orElse(5);
+
+        Pageable pageable = PageRequest.of(currentPage - 1, pagesSize);
+        Page<Employee> employeesPage = employeeService.getAllEmployees(pageable);
+
+        model.addAttribute("employeesPage", employeesPage);
+
+        int totalPages = employeesPage.getTotalPages();
+        if (totalPages > 0) {
+            List<Integer> pagesNumbers = IntStream.rangeClosed(1, totalPages)
+                    .boxed()
+                    .collect(Collectors.toList());
+            model.addAttribute("pagesNumbers", pagesNumbers);
+        }
+
+        model.addAttribute("projectId", projectId);
+        model.addAttribute("employeeId", employeeId);
+
+        return "select-new-employee";
+    }
+
     @GetMapping("/edit/{id}")
     public String editProject(@PathVariable("id") Long id, Model model) {
         Project project = projectService.getProjectById(id)
-                .orElseThrow(() -> new RuntimeException("The project was not found."));
+                .orElseThrow(() -> new RuntimeException(THE_PROJECT_WAS_NOT_FOUND));
         List<Category> categoryList = categoryService.getAllCategory();
         model.addAttribute("project", project);
         model.addAttribute("categoryList", categoryList);
@@ -106,7 +158,7 @@ public class ProjectController {
     @GetMapping("/view/{id}")
     public String viewProject(@PathVariable("id") Long id, Model model) {
         Project project = projectService.getProjectById(id)
-                .orElseThrow(() -> new RuntimeException("The project was not found."));
+                .orElseThrow(() -> new RuntimeException(THE_PROJECT_WAS_NOT_FOUND));
 
         model.addAttribute("project", project);
 
