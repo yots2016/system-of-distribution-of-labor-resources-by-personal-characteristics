@@ -4,13 +4,13 @@ import com.distributionsystem.model.*;
 import com.distributionsystem.repository.EmployeeRepository;
 import com.distributionsystem.service.RecruitmentService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+
+import static com.distributionsystem.utils.CharacteristicsExtractingUtils.extractAllEmployeeCharacteristics;
+import static com.distributionsystem.utils.CharacteristicsExtractingUtils.extractAllRoleCharacteristics;
 
 @Service
 @RequiredArgsConstructor
@@ -57,40 +57,6 @@ public class RecruitmentServiceImpl implements RecruitmentService {
         project.addEmployee(employee);
     }
 
-    private Map<String, Float> extractAllEmployeeCharacteristics(Employee employee) {
-        Map<String, Float> personalCharacteristics = employee.getEmployeePersonalDataSet().stream()
-                .map(employeePersonalData -> Pair.of(employeePersonalData.getCommonPersonalData().getDescription(),
-                        employeePersonalData.getWeightingFactor().getWeightingFactor()))
-                .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond, this::mergeEmployeesCharacteristics));
-        Map<String, Float> professionalCharacteristics = employee.getEmployeeProfessionalDataSet().stream()
-                .map(employeeProfessionalData -> Pair.of(
-                        employeeProfessionalData.getCommonProfessionalData().getDescription(),
-                        employeeProfessionalData.getWeightingFactor().getWeightingFactor()))
-                .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond, this::mergeEmployeesCharacteristics));
-        return Stream.concat(professionalCharacteristics.entrySet().stream(),
-                personalCharacteristics.entrySet().stream())
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-    }
-
-    private Map<String, Float> extractAllRoleCharacteristics(ProjectEmployeeRole projectEmployeeRole) {
-        Map<String, Float> rolePersonalCharacteristics = projectEmployeeRole.getProjectEmployeeRolePersonalDataSet()
-                .stream()
-                .map(projectEmployeeRolePersonalData -> Pair.of(
-                        projectEmployeeRolePersonalData.getCommonPersonalData().getDescription(),
-                        projectEmployeeRolePersonalData.getWeightingFactor().getWeightingFactor()))
-                .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond,
-                        this::mergeProjectEmployeeRolesCharacteristics));
-        Map<String, Float> roleProfessionalCharacteristics =
-                projectEmployeeRole.getProjectEmployeeRoleProfessionalDataSet().stream()
-                        .map(data -> Pair.of(data.getCommonProfessionalData().getDescription(),
-                                data.getWeightingFactor().getWeightingFactor()))
-                        .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond,
-                                this::mergeProjectEmployeeRolesCharacteristics));
-        return Stream.concat(rolePersonalCharacteristics.entrySet().stream(), roleProfessionalCharacteristics.entrySet()
-                .stream())
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-    }
-
     private boolean checkMatch(Map<String, Float> employeeCharacteristics, Map<String, Float> roleCharacteristics) {
         return roleCharacteristics.entrySet().stream()
                 .allMatch(entry -> {
@@ -102,13 +68,5 @@ public class RecruitmentServiceImpl implements RecruitmentService {
                         return false;
                     }
                 });
-    }
-
-    private Float mergeEmployeesCharacteristics(Float float1, Float float2) {
-        return float1 > float2 ? float1 : float2;
-    }
-
-    private Float mergeProjectEmployeeRolesCharacteristics(Float float1, Float float2) {
-        return float1 > float2 ? float2 : float1;
     }
 }

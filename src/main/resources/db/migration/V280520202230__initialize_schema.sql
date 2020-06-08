@@ -11,7 +11,7 @@ CREATE TABLE project
     created_at  timestamp,
     name        character varying(255) DEFAULT NULL,
     price       real,
-    quantity    integer,
+    quantity    real,
     updated_at  timestamp,
     category_id bigint    NOT NULL,
     CONSTRAINT project_pkey PRIMARY KEY (id),

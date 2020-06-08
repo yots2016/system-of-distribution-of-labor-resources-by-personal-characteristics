@@ -22,7 +22,7 @@ public class Project {
     private String name;
 
     @Column(name = "quantity")
-    private Integer quantity;
+    private Float quantity;
 
     @Column(name = "price")
     private Float price;

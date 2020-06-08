@@ -21,6 +21,7 @@ public class ProjectServiceImpl implements ProjectService {
     private final ProjectRepository projectRepository;
     private final CategoryRepository categoryRepository;
 
+    private final QuantityCalculationService quantityCalculationService;
     private final RecruitmentService recruitmentService;
     private final List<ProjectEmployeeRoleSavingService> projectEmployeeRoleSavingServices;
 
@@ -41,10 +42,10 @@ public class ProjectServiceImpl implements ProjectService {
         project.setCategory(category);
         projectRepository.save(project);
         category.addProject(project);
-
         saveAllEmployeesRoles(newProjectDto, project);
-
         this.recruitmentService.selectEmployeesForProject(project);
+        project.setQuantity((float) quantityCalculationService.calculateProjectQuantity(project));
+        projectRepository.save(project);
     }
 
     @Override
@@ -61,7 +62,6 @@ public class ProjectServiceImpl implements ProjectService {
         Project project = new Project();
         project.setName(newProjectDto.getName());
         project.setPrice(newProjectDto.getPrice());
-        project.setQuantity(newProjectDto.getQuantity());
         return project;
     }
 
