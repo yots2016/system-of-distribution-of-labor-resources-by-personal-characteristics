@@ -272,6 +272,5 @@ public class NewProjectDto {
     private String infEmployeeSeventhProfessionalWeightingFactor;
 
     private String categoryName;
-    private Integer quantity;
     private Float price;
 }
