@@ -33,7 +33,7 @@ public class RecruitmentServiceImpl implements RecruitmentService {
     }
 
     private void findCorrespondingEmployee(Project project, ProjectEmployeeRole projectEmployeeRole) {
-        Map<String, Short> roleCharacteristics = extractAllRoleCharacteristics(projectEmployeeRole);
+        Map<String, Float> roleCharacteristics = extractAllRoleCharacteristics(projectEmployeeRole);
 
         employeeRepository
                 .findAll().stream()
@@ -44,8 +44,8 @@ public class RecruitmentServiceImpl implements RecruitmentService {
 
     }
 
-    private boolean checkEmployeeAndRoleMatch(Map<String, Short> roleCharacteristics, Employee employee) {
-        Map<String, Short> employeeCharacteristics = extractAllEmployeeCharacteristics(employee);
+    private boolean checkEmployeeAndRoleMatch(Map<String, Float> roleCharacteristics, Employee employee) {
+        Map<String, Float> employeeCharacteristics = extractAllEmployeeCharacteristics(employee);
         return checkMatch(employeeCharacteristics, roleCharacteristics);
     }
 
@@ -57,12 +57,12 @@ public class RecruitmentServiceImpl implements RecruitmentService {
         project.addEmployee(employee);
     }
 
-    private Map<String, Short> extractAllEmployeeCharacteristics(Employee employee) {
-        Map<String, Short> personalCharacteristics = employee.getEmployeePersonalDataSet().stream()
+    private Map<String, Float> extractAllEmployeeCharacteristics(Employee employee) {
+        Map<String, Float> personalCharacteristics = employee.getEmployeePersonalDataSet().stream()
                 .map(employeePersonalData -> Pair.of(employeePersonalData.getCommonPersonalData().getDescription(),
                         employeePersonalData.getWeightingFactor().getWeightingFactor()))
                 .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond, this::mergeEmployeesCharacteristics));
-        Map<String, Short> professionalCharacteristics = employee.getEmployeeProfessionalDataSet().stream()
+        Map<String, Float> professionalCharacteristics = employee.getEmployeeProfessionalDataSet().stream()
                 .map(employeeProfessionalData -> Pair.of(
                         employeeProfessionalData.getCommonProfessionalData().getDescription(),
                         employeeProfessionalData.getWeightingFactor().getWeightingFactor()))
@@ -72,15 +72,15 @@ public class RecruitmentServiceImpl implements RecruitmentService {
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 
-    private Map<String, Short> extractAllRoleCharacteristics(ProjectEmployeeRole projectEmployeeRole) {
-        Map<String, Short> rolePersonalCharacteristics = projectEmployeeRole.getProjectEmployeeRolePersonalDataSet()
+    private Map<String, Float> extractAllRoleCharacteristics(ProjectEmployeeRole projectEmployeeRole) {
+        Map<String, Float> rolePersonalCharacteristics = projectEmployeeRole.getProjectEmployeeRolePersonalDataSet()
                 .stream()
                 .map(projectEmployeeRolePersonalData -> Pair.of(
                         projectEmployeeRolePersonalData.getCommonPersonalData().getDescription(),
                         projectEmployeeRolePersonalData.getWeightingFactor().getWeightingFactor()))
                 .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond,
                         this::mergeProjectEmployeeRolesCharacteristics));
-        Map<String, Short> roleProfessionalCharacteristics =
+        Map<String, Float> roleProfessionalCharacteristics =
                 projectEmployeeRole.getProjectEmployeeRoleProfessionalDataSet().stream()
                         .map(data -> Pair.of(data.getCommonProfessionalData().getDescription(),
                                 data.getWeightingFactor().getWeightingFactor()))
@@ -91,12 +91,12 @@ public class RecruitmentServiceImpl implements RecruitmentService {
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 
-    private boolean checkMatch(Map<String, Short> employeeCharacteristics, Map<String, Short> roleCharacteristics) {
+    private boolean checkMatch(Map<String, Float> employeeCharacteristics, Map<String, Float> roleCharacteristics) {
         return roleCharacteristics.entrySet().stream()
                 .allMatch(entry -> {
                     boolean containsKey = employeeCharacteristics.containsKey(entry.getKey());
                     if (containsKey) {
-                        Short weightingFactor = employeeCharacteristics.get(entry.getKey());
+                        Float weightingFactor = employeeCharacteristics.get(entry.getKey());
                         return entry.getValue() <= weightingFactor;
                     } else {
                         return false;
@@ -104,11 +104,11 @@ public class RecruitmentServiceImpl implements RecruitmentService {
                 });
     }
 
-    private Short mergeEmployeesCharacteristics(Short short1, Short short2) {
-        return short1 > short2 ? short1 : short2;
+    private Float mergeEmployeesCharacteristics(Float float1, Float float2) {
+        return float1 > float2 ? float1 : float2;
     }
 
-    private Short mergeProjectEmployeeRolesCharacteristics(Short short1, Short short2) {
-        return short1 > short2 ? short2 : short1;
+    private Float mergeProjectEmployeeRolesCharacteristics(Float float1, Float float2) {
+        return float1 > float2 ? float2 : float1;
     }
 }

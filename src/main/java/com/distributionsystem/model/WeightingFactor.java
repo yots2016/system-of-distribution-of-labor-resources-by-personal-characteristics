@@ -24,7 +24,7 @@ public class WeightingFactor {
     private String name;
 
     @Column(name = "weighting_factor", nullable = false)
-    private Short weightingFactor;
+    private Float weightingFactor;
 
     @OneToMany(mappedBy = "weightingFactor")
     private Set<EmployeePersonalData> employeePersonalDataSet;

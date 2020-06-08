@@ -16,7 +16,7 @@ CREATE TABLE weighting_factor
 (
     id               bigserial               NOT NULL,
     name             character varying(4000) NOT NULL,
-    weighting_factor smallint                NOT NULL,
+    weighting_factor real                    NOT NULL,
     UNIQUE (name),
     UNIQUE (weighting_factor),
     PRIMARY KEY (id)

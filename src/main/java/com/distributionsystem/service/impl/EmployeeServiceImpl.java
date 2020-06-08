@@ -76,7 +76,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             firstEmployeePersonalData.setCommonPersonalData(commonPersonalDataRepository
                     .findByDescription(newEmployeeDto.getEmployeeFirstPersonalCharacteristic()));
             firstEmployeePersonalData.setWeightingFactor(weightingFactorRepository
-                    .findByWeightingFactor(Short.valueOf(newEmployeeDto.getEmployeeFirstPersonalWeightingFactor())));
+                    .findByWeightingFactor(Float.valueOf(newEmployeeDto.getEmployeeFirstPersonalWeightingFactor())));
             firstEmployeePersonalData.setEmployee(employee);
             employeePersonalDataRepository.save(firstEmployeePersonalData);
             employee.setEmployeePersonalData(firstEmployeePersonalData);
@@ -88,7 +88,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             firstEmployeeProfessionalData.setCommonProfessionalData(commonProfessionalDataRepository
                     .findByDescription(newEmployeeDto.getEmployeeFirstProfessionalCharacteristic()));
             firstEmployeeProfessionalData.setWeightingFactor(weightingFactorRepository
-                    .findByWeightingFactor(Short.valueOf(newEmployeeDto.getEmployeeFirstProfessionalWeightingFactor())));
+                    .findByWeightingFactor(Float.valueOf(newEmployeeDto.getEmployeeFirstProfessionalWeightingFactor())));
             firstEmployeeProfessionalData.setEmployee(employee);
             employeeProfessionalDataRepository.save(firstEmployeeProfessionalData);
             employee.setEmployeeProfessionalData(firstEmployeeProfessionalData);
@@ -102,7 +102,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             secondEmployeePersonalData.setCommonPersonalData(commonPersonalDataRepository
                     .findByDescription(newEmployeeDto.getEmployeeSecondPersonalCharacteristic()));
             secondEmployeePersonalData.setWeightingFactor(weightingFactorRepository
-                    .findByWeightingFactor(Short.valueOf(newEmployeeDto.getEmployeeSecondPersonalWeightingFactor())));
+                    .findByWeightingFactor(Float.valueOf(newEmployeeDto.getEmployeeSecondPersonalWeightingFactor())));
             secondEmployeePersonalData.setEmployee(employee);
             employeePersonalDataRepository.save(secondEmployeePersonalData);
             employee.setEmployeePersonalData(secondEmployeePersonalData);
@@ -114,7 +114,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             secondEmployeeProfessionalData.setCommonProfessionalData(commonProfessionalDataRepository
                     .findByDescription(newEmployeeDto.getEmployeeSecondProfessionalCharacteristic()));
             secondEmployeeProfessionalData.setWeightingFactor(weightingFactorRepository
-                    .findByWeightingFactor(Short.valueOf(newEmployeeDto.getEmployeeSecondProfessionalWeightingFactor())));
+                    .findByWeightingFactor(Float.valueOf(newEmployeeDto.getEmployeeSecondProfessionalWeightingFactor())));
             secondEmployeeProfessionalData.setEmployee(employee);
             employeeProfessionalDataRepository.save(secondEmployeeProfessionalData);
             employee.setEmployeeProfessionalData(secondEmployeeProfessionalData);
@@ -128,7 +128,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             thirdEmployeePersonalData.setCommonPersonalData(commonPersonalDataRepository
                     .findByDescription(newEmployeeDto.getEmployeeThirdPersonalCharacteristic()));
             thirdEmployeePersonalData.setWeightingFactor(weightingFactorRepository
-                    .findByWeightingFactor(Short.valueOf(newEmployeeDto.getEmployeeThirdPersonalWeightingFactor())));
+                    .findByWeightingFactor(Float.valueOf(newEmployeeDto.getEmployeeThirdPersonalWeightingFactor())));
             thirdEmployeePersonalData.setEmployee(employee);
             employeePersonalDataRepository.save(thirdEmployeePersonalData);
             employee.setEmployeePersonalData(thirdEmployeePersonalData);
@@ -140,7 +140,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             thirdEmployeeProfessionalData.setCommonProfessionalData(commonProfessionalDataRepository
                     .findByDescription(newEmployeeDto.getEmployeeThirdProfessionalCharacteristic()));
             thirdEmployeeProfessionalData.setWeightingFactor(weightingFactorRepository
-                    .findByWeightingFactor(Short.valueOf(newEmployeeDto.getEmployeeThirdProfessionalWeightingFactor())));
+                    .findByWeightingFactor(Float.valueOf(newEmployeeDto.getEmployeeThirdProfessionalWeightingFactor())));
             thirdEmployeeProfessionalData.setEmployee(employee);
             employeeProfessionalDataRepository.save(thirdEmployeeProfessionalData);
             employee.setEmployeeProfessionalData(thirdEmployeeProfessionalData);
@@ -154,7 +154,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             fourthEmployeePersonalData.setCommonPersonalData(commonPersonalDataRepository
                     .findByDescription(newEmployeeDto.getEmployeeFourthPersonalCharacteristic()));
             fourthEmployeePersonalData.setWeightingFactor(weightingFactorRepository
-                    .findByWeightingFactor(Short.valueOf(newEmployeeDto.getEmployeeFourthPersonalWeightingFactor())));
+                    .findByWeightingFactor(Float.valueOf(newEmployeeDto.getEmployeeFourthPersonalWeightingFactor())));
             fourthEmployeePersonalData.setEmployee(employee);
             employeePersonalDataRepository.save(fourthEmployeePersonalData);
             employee.setEmployeePersonalData(fourthEmployeePersonalData);
@@ -166,7 +166,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             fourthEmployeeProfessionalData.setCommonProfessionalData(commonProfessionalDataRepository
                     .findByDescription(newEmployeeDto.getEmployeeFourthProfessionalCharacteristic()));
             fourthEmployeeProfessionalData.setWeightingFactor(weightingFactorRepository
-                    .findByWeightingFactor(Short.valueOf(newEmployeeDto.getEmployeeFourthProfessionalWeightingFactor())));
+                    .findByWeightingFactor(Float.valueOf(newEmployeeDto.getEmployeeFourthProfessionalWeightingFactor())));
             fourthEmployeeProfessionalData.setEmployee(employee);
             employeeProfessionalDataRepository.save(fourthEmployeeProfessionalData);
             employee.setEmployeeProfessionalData(fourthEmployeeProfessionalData);
@@ -180,7 +180,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             fifthEmployeePersonalData.setCommonPersonalData(commonPersonalDataRepository
                     .findByDescription(newEmployeeDto.getEmployeeFifthPersonalCharacteristic()));
             fifthEmployeePersonalData.setWeightingFactor(weightingFactorRepository
-                    .findByWeightingFactor(Short.valueOf(newEmployeeDto.getEmployeeFifthPersonalWeightingFactor())));
+                    .findByWeightingFactor(Float.valueOf(newEmployeeDto.getEmployeeFifthPersonalWeightingFactor())));
             fifthEmployeePersonalData.setEmployee(employee);
             employeePersonalDataRepository.save(fifthEmployeePersonalData);
             employee.setEmployeePersonalData(fifthEmployeePersonalData);
@@ -192,7 +192,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             fifthEmployeeProfessionalData.setCommonProfessionalData(commonProfessionalDataRepository
                     .findByDescription(newEmployeeDto.getEmployeeFifthProfessionalCharacteristic()));
             fifthEmployeeProfessionalData.setWeightingFactor(weightingFactorRepository
-                    .findByWeightingFactor(Short.valueOf(newEmployeeDto.getEmployeeFifthProfessionalWeightingFactor())));
+                    .findByWeightingFactor(Float.valueOf(newEmployeeDto.getEmployeeFifthProfessionalWeightingFactor())));
             fifthEmployeeProfessionalData.setEmployee(employee);
             employeeProfessionalDataRepository.save(fifthEmployeeProfessionalData);
             employee.setEmployeeProfessionalData(fifthEmployeeProfessionalData);
@@ -206,7 +206,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             sixthEmployeePersonalData.setCommonPersonalData(commonPersonalDataRepository
                     .findByDescription(newEmployeeDto.getEmployeeSixthPersonalCharacteristic()));
             sixthEmployeePersonalData.setWeightingFactor(weightingFactorRepository
-                    .findByWeightingFactor(Short.valueOf(newEmployeeDto.getEmployeeSixthPersonalWeightingFactor())));
+                    .findByWeightingFactor(Float.valueOf(newEmployeeDto.getEmployeeSixthPersonalWeightingFactor())));
             sixthEmployeePersonalData.setEmployee(employee);
             employeePersonalDataRepository.save(sixthEmployeePersonalData);
             employee.setEmployeePersonalData(sixthEmployeePersonalData);
@@ -218,7 +218,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             sixthEmployeeProfessionalData.setCommonProfessionalData(commonProfessionalDataRepository
                     .findByDescription(newEmployeeDto.getEmployeeSixthProfessionalCharacteristic()));
             sixthEmployeeProfessionalData.setWeightingFactor(weightingFactorRepository
-                    .findByWeightingFactor(Short.valueOf(newEmployeeDto.getEmployeeSixthProfessionalWeightingFactor())));
+                    .findByWeightingFactor(Float.valueOf(newEmployeeDto.getEmployeeSixthProfessionalWeightingFactor())));
             sixthEmployeeProfessionalData.setEmployee(employee);
             employeeProfessionalDataRepository.save(sixthEmployeeProfessionalData);
             employee.setEmployeeProfessionalData(sixthEmployeeProfessionalData);
@@ -232,7 +232,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             seventhEmployeePersonalData.setCommonPersonalData(commonPersonalDataRepository
                     .findByDescription(newEmployeeDto.getEmployeeSeventhPersonalCharacteristic()));
             seventhEmployeePersonalData.setWeightingFactor(weightingFactorRepository
-                    .findByWeightingFactor(Short.valueOf(newEmployeeDto.getEmployeeSeventhPersonalWeightingFactor())));
+                    .findByWeightingFactor(Float.valueOf(newEmployeeDto.getEmployeeSeventhPersonalWeightingFactor())));
             seventhEmployeePersonalData.setEmployee(employee);
             employeePersonalDataRepository.save(seventhEmployeePersonalData);
             employee.setEmployeePersonalData(seventhEmployeePersonalData);
@@ -244,7 +244,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             seventhEmployeeProfessionalData.setCommonProfessionalData(commonProfessionalDataRepository
                     .findByDescription(newEmployeeDto.getEmployeeSeventhProfessionalCharacteristic()));
             seventhEmployeeProfessionalData.setWeightingFactor(weightingFactorRepository
-                    .findByWeightingFactor(Short.valueOf(newEmployeeDto.getEmployeeSeventhProfessionalWeightingFactor())));
+                    .findByWeightingFactor(Float.valueOf(newEmployeeDto.getEmployeeSeventhProfessionalWeightingFactor())));
             seventhEmployeeProfessionalData.setEmployee(employee);
             employeeProfessionalDataRepository.save(seventhEmployeeProfessionalData);
             employee.setEmployeeProfessionalData(seventhEmployeeProfessionalData);

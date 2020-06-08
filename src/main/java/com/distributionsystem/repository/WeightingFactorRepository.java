@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface WeightingFactorRepository extends JpaRepository<WeightingFactor, Long> {
 
-    WeightingFactor findByWeightingFactor(Short weightingFactor);
+    WeightingFactor findByWeightingFactor(Float weightingFactor);
 }
