@@ -1,15 +1,15 @@
 INSERT INTO weighting_factor (name, weighting_factor)
-VALUES ('HIGHEST', 11),
-       ('VERY HIGH', 10),
-       ('HIGH', 9),
-       ('LOW HIGH', 8),
-       ('LOWEST HIGH', 7),
-       ('AVERAGE', 6),
-       ('HIGHEST LOW', 5),
-       ('HIGH LOW', 4),
-       ('LOW', 3),
-       ('VERY LOW', 2),
-       ('LOWEST', 1);
+VALUES ('HIGHEST', 1.0),
+       ('VERY HIGH', 0.9),
+       ('HIGH', 0.8),
+       ('LOW HIGH', 0.7),
+       ('LOWEST HIGH', 0.6),
+       ('AVERAGE', 0.5),
+       ('HIGHEST LOW', 0.4),
+       ('HIGH LOW', 0.3),
+       ('LOW', 0.2),
+       ('VERY LOW', 0.1),
+       ('LOWEST', 0.01);
 
 INSERT INTO common_personal_data (description)
 VALUES ('honesty'),

@@ -53,7 +53,7 @@ public class FeProjectEmployeeRoleSavingService implements ProjectEmployeeRoleSa
             secondProjectEmployeeRolePersonalData.setCommonPersonalData(commonPersonalDataRepository
                     .findByDescription(newProjectDto.getFeEmployeeSecondPersonalCharacteristic()));
             secondProjectEmployeeRolePersonalData.setWeightingFactor(weightingFactorRepository
-                    .findByWeightingFactor(Short.valueOf(newProjectDto.getFeEmployeeSecondPersonalWeightingFactor())));
+                    .findByWeightingFactor(Float.valueOf(newProjectDto.getFeEmployeeSecondPersonalWeightingFactor())));
             secondProjectEmployeeRolePersonalData.setProjectEmployeeRole(feProjectEmployeeRole);
             projectEmployeeRolePersonalDataRepository.save(secondProjectEmployeeRolePersonalData);
             feProjectEmployeeRole.setProjectEmployeeRolePersonalData(secondProjectEmployeeRolePersonalData);
@@ -65,7 +65,7 @@ public class FeProjectEmployeeRoleSavingService implements ProjectEmployeeRoleSa
             secondProjectEmployeeRoleProfessionalData.setCommonProfessionalData(commonProfessionalDataRepository
                     .findByDescription(newProjectDto.getFeEmployeeSecondProfessionalCharacteristic()));
             secondProjectEmployeeRoleProfessionalData.setWeightingFactor(weightingFactorRepository
-                    .findByWeightingFactor(Short.valueOf(newProjectDto.getFeEmployeeSecondProfessionalWeightingFactor())));
+                    .findByWeightingFactor(Float.valueOf(newProjectDto.getFeEmployeeSecondProfessionalWeightingFactor())));
             secondProjectEmployeeRoleProfessionalData.setProjectEmployeeRole(feProjectEmployeeRole);
             projectEmployeeRoleProfessionalDataRepository.save(secondProjectEmployeeRoleProfessionalData);
             feProjectEmployeeRole.setProjectEmployeeRoleProfessionalData(secondProjectEmployeeRoleProfessionalData);
@@ -79,7 +79,7 @@ public class FeProjectEmployeeRoleSavingService implements ProjectEmployeeRoleSa
             firstProjectEmployeeRolePersonalData.setCommonPersonalData(commonPersonalDataRepository
                     .findByDescription(newProjectDto.getFeEmployeeFirstPersonalCharacteristic()));
             firstProjectEmployeeRolePersonalData.setWeightingFactor(weightingFactorRepository
-                    .findByWeightingFactor(Short.valueOf(newProjectDto.getFeEmployeeFirstPersonalWeightingFactor())));
+                    .findByWeightingFactor(Float.valueOf(newProjectDto.getFeEmployeeFirstPersonalWeightingFactor())));
             firstProjectEmployeeRolePersonalData.setProjectEmployeeRole(feProjectEmployeeRole);
             projectEmployeeRolePersonalDataRepository.save(firstProjectEmployeeRolePersonalData);
             feProjectEmployeeRole.setProjectEmployeeRolePersonalData(firstProjectEmployeeRolePersonalData);
@@ -90,7 +90,7 @@ public class FeProjectEmployeeRoleSavingService implements ProjectEmployeeRoleSa
             firstProjectEmployeeRoleProfessionalData.setCommonProfessionalData(commonProfessionalDataRepository
                     .findByDescription(newProjectDto.getFeEmployeeFirstProfessionalCharacteristic()));
             firstProjectEmployeeRoleProfessionalData.setWeightingFactor(weightingFactorRepository
-                    .findByWeightingFactor(Short.valueOf(newProjectDto.getFeEmployeeFirstProfessionalWeightingFactor())));
+                    .findByWeightingFactor(Float.valueOf(newProjectDto.getFeEmployeeFirstProfessionalWeightingFactor())));
             firstProjectEmployeeRoleProfessionalData.setProjectEmployeeRole(feProjectEmployeeRole);
             projectEmployeeRoleProfessionalDataRepository.save(firstProjectEmployeeRoleProfessionalData);
             feProjectEmployeeRole.setProjectEmployeeRoleProfessionalData(firstProjectEmployeeRoleProfessionalData);
@@ -104,7 +104,7 @@ public class FeProjectEmployeeRoleSavingService implements ProjectEmployeeRoleSa
             thirdProjectEmployeeRolePersonalData.setCommonPersonalData(commonPersonalDataRepository
                     .findByDescription(newProjectDto.getFeEmployeeThirdPersonalCharacteristic()));
             thirdProjectEmployeeRolePersonalData.setWeightingFactor(weightingFactorRepository
-                    .findByWeightingFactor(Short.valueOf(newProjectDto.getFeEmployeeThirdPersonalWeightingFactor())));
+                    .findByWeightingFactor(Float.valueOf(newProjectDto.getFeEmployeeThirdPersonalWeightingFactor())));
             thirdProjectEmployeeRolePersonalData.setProjectEmployeeRole(feProjectEmployeeRole);
             projectEmployeeRolePersonalDataRepository.save(thirdProjectEmployeeRolePersonalData);
             feProjectEmployeeRole.setProjectEmployeeRolePersonalData(thirdProjectEmployeeRolePersonalData);
@@ -116,7 +116,7 @@ public class FeProjectEmployeeRoleSavingService implements ProjectEmployeeRoleSa
             thirdProjectEmployeeRoleProfessionalData.setCommonProfessionalData(commonProfessionalDataRepository
                     .findByDescription(newProjectDto.getFeEmployeeThirdProfessionalCharacteristic()));
             thirdProjectEmployeeRoleProfessionalData.setWeightingFactor(weightingFactorRepository
-                    .findByWeightingFactor(Short.valueOf(newProjectDto.getFeEmployeeThirdProfessionalWeightingFactor())));
+                    .findByWeightingFactor(Float.valueOf(newProjectDto.getFeEmployeeThirdProfessionalWeightingFactor())));
             thirdProjectEmployeeRoleProfessionalData.setProjectEmployeeRole(feProjectEmployeeRole);
             projectEmployeeRoleProfessionalDataRepository.save(thirdProjectEmployeeRoleProfessionalData);
             feProjectEmployeeRole.setProjectEmployeeRoleProfessionalData(thirdProjectEmployeeRoleProfessionalData);
@@ -130,7 +130,7 @@ public class FeProjectEmployeeRoleSavingService implements ProjectEmployeeRoleSa
             fourthProjectEmployeeRolePersonalData.setCommonPersonalData(commonPersonalDataRepository
                     .findByDescription(newProjectDto.getFeEmployeeFourthPersonalCharacteristic()));
             fourthProjectEmployeeRolePersonalData.setWeightingFactor(weightingFactorRepository
-                    .findByWeightingFactor(Short.valueOf(newProjectDto.getFeEmployeeFourthPersonalWeightingFactor())));
+                    .findByWeightingFactor(Float.valueOf(newProjectDto.getFeEmployeeFourthPersonalWeightingFactor())));
             fourthProjectEmployeeRolePersonalData.setProjectEmployeeRole(feProjectEmployeeRole);
             projectEmployeeRolePersonalDataRepository.save(fourthProjectEmployeeRolePersonalData);
             feProjectEmployeeRole.setProjectEmployeeRolePersonalData(fourthProjectEmployeeRolePersonalData);
@@ -142,7 +142,7 @@ public class FeProjectEmployeeRoleSavingService implements ProjectEmployeeRoleSa
             fourthProjectEmployeeRoleProfessionalData.setCommonProfessionalData(commonProfessionalDataRepository
                     .findByDescription(newProjectDto.getFeEmployeeFourthProfessionalCharacteristic()));
             fourthProjectEmployeeRoleProfessionalData.setWeightingFactor(weightingFactorRepository
-                    .findByWeightingFactor(Short.valueOf(newProjectDto.getFeEmployeeFourthProfessionalWeightingFactor())));
+                    .findByWeightingFactor(Float.valueOf(newProjectDto.getFeEmployeeFourthProfessionalWeightingFactor())));
             fourthProjectEmployeeRoleProfessionalData.setProjectEmployeeRole(feProjectEmployeeRole);
             projectEmployeeRoleProfessionalDataRepository.save(fourthProjectEmployeeRoleProfessionalData);
             feProjectEmployeeRole.setProjectEmployeeRoleProfessionalData(fourthProjectEmployeeRoleProfessionalData);
@@ -156,7 +156,7 @@ public class FeProjectEmployeeRoleSavingService implements ProjectEmployeeRoleSa
             fifthProjectEmployeeRolePersonalData.setCommonPersonalData(commonPersonalDataRepository
                     .findByDescription(newProjectDto.getFeEmployeeFifthPersonalCharacteristic()));
             fifthProjectEmployeeRolePersonalData.setWeightingFactor(weightingFactorRepository
-                    .findByWeightingFactor(Short.valueOf(newProjectDto.getFeEmployeeFifthPersonalWeightingFactor())));
+                    .findByWeightingFactor(Float.valueOf(newProjectDto.getFeEmployeeFifthPersonalWeightingFactor())));
             fifthProjectEmployeeRolePersonalData.setProjectEmployeeRole(feProjectEmployeeRole);
             projectEmployeeRolePersonalDataRepository.save(fifthProjectEmployeeRolePersonalData);
             feProjectEmployeeRole.setProjectEmployeeRolePersonalData(fifthProjectEmployeeRolePersonalData);
@@ -168,7 +168,7 @@ public class FeProjectEmployeeRoleSavingService implements ProjectEmployeeRoleSa
             fifthProjectEmployeeRoleProfessionalData.setCommonProfessionalData(commonProfessionalDataRepository
                     .findByDescription(newProjectDto.getFeEmployeeFifthProfessionalCharacteristic()));
             fifthProjectEmployeeRoleProfessionalData.setWeightingFactor(weightingFactorRepository
-                    .findByWeightingFactor(Short.valueOf(newProjectDto.getFeEmployeeFifthProfessionalWeightingFactor())));
+                    .findByWeightingFactor(Float.valueOf(newProjectDto.getFeEmployeeFifthProfessionalWeightingFactor())));
             fifthProjectEmployeeRoleProfessionalData.setProjectEmployeeRole(feProjectEmployeeRole);
             projectEmployeeRoleProfessionalDataRepository.save(fifthProjectEmployeeRoleProfessionalData);
             feProjectEmployeeRole.setProjectEmployeeRoleProfessionalData(fifthProjectEmployeeRoleProfessionalData);
@@ -182,7 +182,7 @@ public class FeProjectEmployeeRoleSavingService implements ProjectEmployeeRoleSa
             sixthProjectEmployeeRolePersonalData.setCommonPersonalData(commonPersonalDataRepository
                     .findByDescription(newProjectDto.getFeEmployeeSixthPersonalCharacteristic()));
             sixthProjectEmployeeRolePersonalData.setWeightingFactor(weightingFactorRepository
-                    .findByWeightingFactor(Short.valueOf(newProjectDto.getFeEmployeeFirstPersonalWeightingFactor())));
+                    .findByWeightingFactor(Float.valueOf(newProjectDto.getFeEmployeeFirstPersonalWeightingFactor())));
             sixthProjectEmployeeRolePersonalData.setProjectEmployeeRole(feProjectEmployeeRole);
             projectEmployeeRolePersonalDataRepository.save(sixthProjectEmployeeRolePersonalData);
             feProjectEmployeeRole.setProjectEmployeeRolePersonalData(sixthProjectEmployeeRolePersonalData);
@@ -194,7 +194,7 @@ public class FeProjectEmployeeRoleSavingService implements ProjectEmployeeRoleSa
             sixthProjectEmployeeRoleProfessionalData.setCommonProfessionalData(commonProfessionalDataRepository
                     .findByDescription(newProjectDto.getFeEmployeeSixthProfessionalCharacteristic()));
             sixthProjectEmployeeRoleProfessionalData.setWeightingFactor(weightingFactorRepository
-                    .findByWeightingFactor(Short.valueOf(newProjectDto.getFeEmployeeSixthProfessionalWeightingFactor())));
+                    .findByWeightingFactor(Float.valueOf(newProjectDto.getFeEmployeeSixthProfessionalWeightingFactor())));
             sixthProjectEmployeeRoleProfessionalData.setProjectEmployeeRole(feProjectEmployeeRole);
             projectEmployeeRoleProfessionalDataRepository.save(sixthProjectEmployeeRoleProfessionalData);
             feProjectEmployeeRole.setProjectEmployeeRoleProfessionalData(sixthProjectEmployeeRoleProfessionalData);
@@ -208,7 +208,7 @@ public class FeProjectEmployeeRoleSavingService implements ProjectEmployeeRoleSa
             seventhProjectEmployeeRolePersonalData.setCommonPersonalData(commonPersonalDataRepository
                     .findByDescription(newProjectDto.getFeEmployeeSeventhPersonalCharacteristic()));
             seventhProjectEmployeeRolePersonalData.setWeightingFactor(weightingFactorRepository
-                    .findByWeightingFactor(Short.valueOf(newProjectDto.getFeEmployeeSeventhPersonalWeightingFactor())));
+                    .findByWeightingFactor(Float.valueOf(newProjectDto.getFeEmployeeSeventhPersonalWeightingFactor())));
             seventhProjectEmployeeRolePersonalData.setProjectEmployeeRole(feProjectEmployeeRole);
             projectEmployeeRolePersonalDataRepository.save(seventhProjectEmployeeRolePersonalData);
             feProjectEmployeeRole.setProjectEmployeeRolePersonalData(seventhProjectEmployeeRolePersonalData);
@@ -220,7 +220,7 @@ public class FeProjectEmployeeRoleSavingService implements ProjectEmployeeRoleSa
             seventhProjectEmployeeRoleProfessionalData.setCommonProfessionalData(commonProfessionalDataRepository
                     .findByDescription(newProjectDto.getFeEmployeeSeventhProfessionalCharacteristic()));
             seventhProjectEmployeeRoleProfessionalData.setWeightingFactor(weightingFactorRepository
-                    .findByWeightingFactor(Short.valueOf(newProjectDto.getFeEmployeeSeventhProfessionalWeightingFactor())));
+                    .findByWeightingFactor(Float.valueOf(newProjectDto.getFeEmployeeSeventhProfessionalWeightingFactor())));
             seventhProjectEmployeeRoleProfessionalData.setProjectEmployeeRole(feProjectEmployeeRole);
             projectEmployeeRoleProfessionalDataRepository.save(seventhProjectEmployeeRoleProfessionalData);
             feProjectEmployeeRole.setProjectEmployeeRoleProfessionalData(seventhProjectEmployeeRoleProfessionalData);
