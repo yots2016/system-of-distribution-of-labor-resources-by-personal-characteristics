@@ -13,6 +13,8 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class BaProjectEmployeeRoleSavingService implements ProjectEmployeeRoleSavingService {
 
+    private static final String BUSINESS_ANALYST = "Business analyst";
+
     private final ProjectRepository projectRepository;
     private final CommonPersonalDataRepository commonPersonalDataRepository;
     private final CommonProfessionalDataRepository commonProfessionalDataRepository;
@@ -30,7 +32,7 @@ public class BaProjectEmployeeRoleSavingService implements ProjectEmployeeRoleSa
 
     private void saveBaProjectEmployeeRole(NewProjectDto newProjectDto, Project project) {
         ProjectEmployeeRole baProjectEmployeeRole = new ProjectEmployeeRole();
-        baProjectEmployeeRole.setEmployeeRole("BA");
+        baProjectEmployeeRole.setEmployeeRole(BUSINESS_ANALYST);
         baProjectEmployeeRole.setEmployeesNumber(Long.valueOf(newProjectDto.getBaEmployeeNumber()));
         baProjectEmployeeRole.setProject(project);
         projectEmployeeRoleRepository.save(baProjectEmployeeRole);
