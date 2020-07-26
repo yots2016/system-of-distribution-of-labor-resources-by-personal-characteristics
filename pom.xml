@@ -118,6 +118,10 @@
         <jquery.version>3.2.1</jquery.version>
         <thymeleaf-layout-dialect.version>2.4.1</thymeleaf-layout-dialect.version>
         <thymeleaf-extras-springsecurity5.version>3.0.4.RELEASE</thymeleaf-extras-springsecurity5.version>
+
+        <sonar.projectKey>yots2016_system-of-distribution-of-labor-resources-by-personal-characteristics</sonar.projectKey>
+        <sonar.organization>yots2016</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
     <dependencies>
         <dependency>
