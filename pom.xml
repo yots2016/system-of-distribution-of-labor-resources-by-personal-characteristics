@@ -239,4 +239,14 @@
             </plugin>
         </plugins>
     </build>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>System of distribution of labor resources by personal characteristics</name>
+            <url>
+                https://maven.pkg.github.com/yots2016/system-of-distribution-of-labor-resources-by-personal-characteristics/
+            </url>
+        </repository>
+    </distributionManagement>
 </project>
