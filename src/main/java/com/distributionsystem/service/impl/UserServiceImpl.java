@@ -1,5 +1,6 @@
 package com.distributionsystem.service.impl;
 
+import com.distributionsystem.dao.UserDAO;
 import com.distributionsystem.dto.UserRegistrationDto;
 import com.distributionsystem.model.Role;
 import com.distributionsystem.model.User;
@@ -24,15 +25,18 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
 
+    private final UserDAO userDAO;
+
     private final BCryptPasswordEncoder passwordEncoder;
 
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        User user = userRepository.findByEmail(email);
-        if (user == null) {
-            throw new UsernameNotFoundException("Invalid username or password.");
-        }
+    public UserDetails loadUserByUsername(String email) {
+        return userDAO.findByEmail(email)
+                .map(this::convertToSecurityUser)
+                .orElseThrow(() -> new UsernameNotFoundException("Invalid username or password."));
+    }
 
+    private org.springframework.security.core.userdetails.User convertToSecurityUser(User user) {
         return new org.springframework.security.core.userdetails.User(user.getEmail(),
                 user.getPassword(),
                 mapRolesToAuthorities(user.getRoles()));
