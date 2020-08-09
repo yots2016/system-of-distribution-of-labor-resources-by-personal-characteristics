@@ -118,6 +118,8 @@
         <jquery.version>3.2.1</jquery.version>
         <thymeleaf-layout-dialect.version>2.4.1</thymeleaf-layout-dialect.version>
         <thymeleaf-extras-springsecurity5.version>3.0.4.RELEASE</thymeleaf-extras-springsecurity5.version>
+
+        <java.version>1.14</java.version>
     </properties>
     <dependencies>
         <dependency>
