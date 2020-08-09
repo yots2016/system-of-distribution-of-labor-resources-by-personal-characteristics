@@ -73,8 +73,8 @@
             <properties>
                 <sonar.sources>.</sonar.sources>
                 <sonar.inclusions>src/main/java/**,src/main/resources/**</sonar.inclusions>
-                <sonar.projectKey>wkrzywiec_NoticeBoard</sonar.projectKey>
-                <sonar.organization>wkrzywiec</sonar.organization>
+                <sonar.projectKey>yots2016_system-of-distribution-of-labor-resources-by-personal-characteristics</sonar.projectKey>
+                <sonar.organization>yots2016</sonar.organization>
                 <sonar.host.url>https://sonarcloud.io</sonar.host.url>
             </properties>
             <activation>
@@ -102,7 +102,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>1.8</java.version>
+        <java.version>11</java.version>
 
         <jakarta.validation-api.version>3.0.0-M1</jakarta.validation-api.version>
 
@@ -118,10 +118,6 @@
         <jquery.version>3.2.1</jquery.version>
         <thymeleaf-layout-dialect.version>2.4.1</thymeleaf-layout-dialect.version>
         <thymeleaf-extras-springsecurity5.version>3.0.4.RELEASE</thymeleaf-extras-springsecurity5.version>
-
-        <sonar.projectKey>yots2016_system-of-distribution-of-labor-resources-by-personal-characteristics</sonar.projectKey>
-        <sonar.organization>yots2016</sonar.organization>
-        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
     <dependencies>
         <dependency>
@@ -137,6 +133,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
         </dependency>
 
         <dependency>
@@ -243,4 +244,14 @@
             </plugin>
         </plugins>
     </build>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>System of distribution of labor resources by personal characteristics</name>
+            <url>
+                https://maven.pkg.github.com/yots2016/system-of-distribution-of-labor-resources-by-personal-characteristics/
+            </url>
+        </repository>
+    </distributionManagement>
 </project>
