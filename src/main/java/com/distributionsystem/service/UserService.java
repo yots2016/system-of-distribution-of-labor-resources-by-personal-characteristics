@@ -5,10 +5,13 @@ import com.distributionsystem.model.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface UserService extends UserDetailsService {
 
-    User findByEmail(String email);
+    Optional<User> findByEmail(String email);
 
-    User save(UserRegistrationDto userRegistrationDto);
+    void save(UserRegistrationDto userRegistrationDto);
+
 }

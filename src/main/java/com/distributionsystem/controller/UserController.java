@@ -9,10 +9,12 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @Controller
 public class UserController {
 
-    private UserService userService;
+    private final UserService userService;
 
     public UserController(UserService userService) {
         this.userService = userService;
@@ -36,17 +38,12 @@ public class UserController {
     @PostMapping("/registration")
     public String registerUserAccount(@ModelAttribute("user") @Valid UserRegistrationDto userDto,
                                       BindingResult result, Model model) {
-        User existing = userService.findByEmail(userDto.getEmail());
-        if (existing != null) {
-            result.rejectValue("email", "", "There is already an account registered with that email");
-        }
-
+        Optional<User> user = userService.findByEmail(userDto.getEmail());
+        user.ifPresent(existingUser -> result.rejectValue("email", "", "There is already an account registered with that email"));
         if (result.hasErrors()) {
             return "login";
         }
-
         userService.save(userDto);
-
         return "redirect:/login?success";
     }
 }
