@@ -5,10 +5,13 @@ import com.distributionsystem.model.User;
 import com.distributionsystem.rowmapper.UserRowMapper;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.namedparam.*;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
 import java.util.Optional;
+import java.util.OptionalLong;
 
 @Repository
 public class UserDAOImpl extends NamedParameterJdbcDaoSupport implements UserDAO {
@@ -30,6 +33,22 @@ public class UserDAOImpl extends NamedParameterJdbcDaoSupport implements UserDAO
         } catch (EmptyResultDataAccessException e) {
             return Optional.empty();
         }
+    }
+
+    @Override
+    public OptionalLong save(User user) {
+        String sql = "INSERT INTO PUBLIC.USER (EMAIL, USERNAME, PASSWORD) VALUES (:email, :username, :password)";
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("email", user.getEmail());
+        paramSource.addValue("username", user.getUsername());
+        paramSource.addValue("password", user.getPassword());
+
+        KeyHolder keyHolder = new GeneratedKeyHolder();
+        jdbcTemplate.update(sql, paramSource, keyHolder, new String[]{"id"});
+        Number key = keyHolder.getKey();
+        return Optional.ofNullable(key)
+                .map(keyValue -> OptionalLong.of(keyValue.longValue()))
+                .orElse(OptionalLong.empty());
     }
 
 }
